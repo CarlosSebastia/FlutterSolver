@@ -1,0 +1,67 @@
+$        THIS CORD2R ENTRY DEFINES THE AERO COORDINATE SYSTEM           $
+$        FLAGGED BY THE AERO ENTRY.  LISTED ARE THE ORIGIN, A           $
+$        POINT ALONG THE Z AXIS AND A POINT IN THE X-Z PLANE,           $
+$        ALL IN THE RID COORDINATE SYSTEM.  NOTE THAT IN THIS           $
+$        COORDINATE SYSTEM THE UPSIDE DOWN AND BACKWARDS STRUC-         $
+$        TURE WILL FLY UPSIDE UP AND FORWARD.                           $
+$                                                                       $
+$       CID     RID     A1      A2      A3      B1      B2      B3
+CORD2R  1               0.      0.      0.      0.      0.      -1.     +C1
+$       C1      C2      C3
++C1     -1.     0.      0.
+$
+$        THE CAERO1 ENTRY IS USED FOR DOUBLET-LATTICE AERODYNAMICS.     $
+$        LISTED ARE ITS PAERO ENTRY ID AND THE COORDINATE SYSTEM        $
+$        FOR LOCATING THE INBOARD AND OUTBOARD LEADING EDGE POINTS      $
+$        (1 AND 4).  NSPAN AND NCHORD, OR LSPAN AND LCHORD, ARE         $
+$        USED TO PARTITION THE WING INTO AERODYNAMIC BOXES, THE         $
+$        FORMER FOR UNIFORMLY SPACED BOXES AND THE LATTER FOR           $
+$        NON-UNIFORMLY SPACED BOXES.  IGID IS THE ID OF ITS             $
+$        ASSOCIATED INTERFERENCE GROUP.  THE CONTINUATION ENTRY         $
+$        DEFINES POINTS 1 AND 2, THE ROOT CHORD AND THE TIP CHORD.      $
+$        THE BOXES FORMED BY THE GRID LINES WILL BE NUMBERED            $
+$        BEGINNING WITH EID, SO A NUMBER SHOULD BE CHOSEN THAT IS       $
+$        UNIQUE, AND IS GREATER THAN ALL STRUCTURAL GRID, SCALAR        $
+$        AND EXTRA POINT IDS.                                           $
+$                                                                       $
+$       EID     PID     CP      NSPAN   NCHORD  LSPAN   LCHORD  IGID    +CA
+CAERO1  1001    1000    0               4       77              1       +CA1
+$       (FWD INBOARD POINT)   ROOTCHORD  (FWD OUTBOARD POINT) TIP CHORD
++CA1    78.75   0.0     0.0     225.0   35.0    500.0   0.0     100.0
+$                                                                       $
+$        THE AEFACT ENTRY IS A UTILITY ENTRY USED TO SPECIFY LISTS OF   $
+$        NUMBERS.  THE CAERO1 ENTRY IDENTIFIES THEM BY LSPAN AND LCHORD.$
+$        THIS AEFACT ENTRY AND ITS CONTINUATION CARD CONTAIN SIX FIELDS $
+$        WHICH SPECIFY THE STRIP EDGES AS FRACTIONS OF THE SPAN.        $
+$                                                                       $
+$       SID     D1      D2      D3      ETC
+AEFACT  77      .0      .09     .276    .454    .636    .826    1.0
+$                                                                       $
+$        THE PAERO ENTRY IS REQUIRED EVEN THOUGH IT IT NON-FUNCTIONAL   $
+$        (BECAUSE THERE ARE NO ASSOCIATED BODIES IN THIS EXAMPLE).      $
+$                                                                       $
+PAERO1  1000
+$                                                                       $
+$               * * SPLINE FIT ON THE LIFTING SURFACES * *              $
+$                                                                       $
+$                    * LINEAR SPLINE FIT ON THE WING *                  $
+$                                                                       $
+$        THE SPLINE2 ENTRY SPECIFIES A BEAM SPLINE FOR INTERPOLAT-      $
+$        ION OVER THE REGION OF THE CAERO ENTRY (ID1 AND ID2 ARE        $
+$        THE FIRST AND LAST BOXES IN THIS REGION).  SETG REFERS         $
+$        TO A SET1 ENTRY WHERE THE STRUCTURAL GRID POINTS ARE           $
+$        DEFINED.  DZ AND DTOR ARE SMOOTHING CONSTANTS FOR LINEAR       $
+$        ATTACHMENT AND TORSIONAL FLEXIBILITIES.  DTHX AND DTHY         $
+$        ARE ROTATIONAL ATTACHMENT FLEXIBILITIES. CID IDENTIFIES        $
+$        THE  SPLINE AXIS.                                              $
+$                                                                       $
+$       EID     CAERO   ID1     ID2     SETG    DZ      DTOR    CID
+SPLINE2 100     1001    1005    1024    14      0.0     1.0     0       +SP100
+$       DTHX    DTHY
++SP100  -1.0    -1.0
+$                                                                       $
+$        THE SET1 ENTRY DEFINES THE SETS OF STRUCTURAL GRID POINTS      $
+$        TO BE USED BY THE BEAM SPLINE FOR INTERPOLATION.               $
+$                                                                       $
+$       SID     G1      G2      G3      G4      G5      G6
+SET1    14      1       THRU    11

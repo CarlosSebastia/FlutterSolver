@@ -1,0 +1,151 @@
+MSC Nastran V2018.1 (Intel Windows 10 Education 6.2 9200) Control File: 
+----------------------------------------------------------------- 
+$ sysfield=SCR*(RAW=YES,BUFFIO=YES,wnum=16,wsize=16mb) $(c:/program files/msc.software/msc_nastran/20181/conf/nast20181.rcf[2])
+$ sysfield=DBALL(RAW=YES,BUFFIO=YES,wnum=16,wsize=16mb) $(c:/program files/msc.software/msc_nastran/20181/conf/nast20181.rcf[3])
+Nastran BUFFSIZE=8193 $(c:/program files/msc.software/msc_nastran/20181/conf/nast20181.rcf[6])
+JID='d:/25_aeroelastic/aerostruct/analysis/output/nastran_example/ha145b.dat'
+OUT='./ha145b'
+MEM=32672MB      $ 
+MACH='Intel'
+OPER='Windows 10 Education'
+OSV='6.2 9200'
+MODEL='Xeon/3826 (TULRLLS-ASSI16)'
+NPROC='16'
+CONFIG=6
+NPROC=16
+symbol=DELDIR='c:/program files/msc.software/msc_nastran/20181/msc20181/nast/del' $(program default)
+symbol=DEMODIR='c:/program files/msc.software/msc_nastran/20181/msc20181/nast/demo' $(program default)
+symbol=LM_NO_SNMP=1 $(c:/program files/msc.software/msc_nastran/20181/conf/nast20181.rcf[10])
+symbol=MKL_INTERFACE_LAYER=ILP64 $(c:/program files/msc.software/msc_nastran/20181/conf/nast20181.rcf[1])
+symbol=SSSALTERDIR='c:/program files/msc.software/msc_nastran/20181/msc20181/nast/sssalter' $(program default)
+symbol=TPLDIR='c:/program files/msc.software/msc_nastran/20181/msc20181/nast/tpl' $(program default)
+SDIR='c:/scratch/ha145b.T23496_35'
+DBS='c:/scratch/ha145b.T23496_35'
+SCR='yes'
+SMEM=100
+BPOOL=8168.1MB
+DMPMEM=estimate
+NEWDEL='c:/program files/msc.software/msc_nastran/20181/msc20181/win64i8/sss'
+DEL='MSCDEF'
+DML=MSCDEF
+SDL=MSCDEF
+AUTH='27500@10.162.199.147'
+AUTHQUE=20
+MSGCAT='c:/program files/msc.software/msc_nastran/20181/msc20181/win64i8/analysis.msg'
+MSGDEST='f06'
+NEWS='c:/program files/msc.software/msc_nastran/20181/msc20181/nast/news.txt'
+----------------------------------------------------------------- 
+MSC_ISHELLPATH=C:\Program Files\MSC.Software\MSC_Nastran\20181\msc20181\actran\win64\Actran_18.0.b.107480\bin;C:\Program Files\MSC.Software\MSC_Nastran\20181\msc20181\nast; 
+MSC_JIDPATH= 
+PATH=c:\program files\msc.software\msc_nastran\20181\msc20181\win64i8;c:\program files\msc.software\msc_nastran\20181\msc20181\win64i8\nCode\bin;c:\program files\msc.software\msc_nastran\20181\msc20181\win64i8\nvidia;c:\program files\msc.software\msc_nastran\20181\msc20181\win64i8\lib;c:\program files\msc.software\msc_nastran\20181\msc20181\win64i8;C:\Program Files\MSC.Software\Patran_x64\20212\bin;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files (x86)\IntelSWTools\compilers_and_libraries_2018.3.210\windows\mpi\intel64\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files\Microsoft MPI\Bin\;C:\WINDOWS\CCM\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\WINDOWS\system32\config\systemprofile\AppData\Local\Microsoft\WindowsApps;C:\Program Files\MATLAB\R2020a\bin;C:\Program Files\Java\OpenJDK_11.0.2\bin;C:\Program Files\CPACS-Creator 0.1.0\bin;C:\Users\ga58ziz\AppData\Local\Programs\Python\Python37;C:\Users\ga58ziz\AppData\Local\Programs\Python\Python38;C:\Program Files\Git\cmd;C:\Program Files\PuTTY\;C:\Program Files\doxygen\bin;C:\Program Files\TIXI 3.1.1\bin;C:\Program Files\TIXI 3.1.1\lib;C:\Program Files\TIGL 3.2.1\lib;C:\Program Files\TIGL 3.2.1\bin;D:\24_Aerodynamic\SU2\SU2-v7.1.0-win64-mpi\bin;D:\24_Aerodynamic\sumo-2.7.10\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\S;C:\Program Files (x86)\PuTTY\;C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit\;D:\24_Aerodynamic\XFOIL6.99;C:\Program Files\CMake\bin;C:\Users\ga58ziz\AppData\Local\Microsoft\WindowsApps;C:\Users\ga58ziz\AppData\Local\Programs\MiKTeX\miktex\bin\x64\ 
+SCA_SERVICE_CATALOG=c:\program files\msc.software\msc_nastran\20181\msc20181\res\SCAServiceCatalog.xml 
+SCA_RESOURCE_DIR=c:\program files\msc.software\msc_nastran\20181\msc20181\res 
+Cmd Line:    C:\Program Files\MSC.Software\MSC_Nastran\20181\msc20181\win64i8\nastran.exe JID=D:\25_Aeroelastic\aeroStruct\analysis\output\nastran_example\ha145b.dat 
+Current Dir: D:\25_Aeroelastic\aeroStruct\analysis\output\nastran_example 
+Time Cmd:    c:\program files\msc.software\msc_nastran\20181\msc20181\win64i8\msctime 
+Executable:  c:\program files\msc.software\msc_nastran\20181\msc20181\win64i8\analysis.exe 
+Arch= Kywd:  [Not specified]  
+MSC_MSG:     stderr  
+FPE:         yes  
+----------------------------------------------------------------- 
+Current resource limits:
+ Physical memory:                    65345 MB
+ Physical memory available:          49556 MB
+ Paging file size:                   75073 MB
+ Paging file size available:         48368 MB
+ Virtual memory:                 134217727 MB
+ Virtual memory available:       134213508 MB
+----------------------------------------------------------------- 
+System configuration:
+ Hostname:         TULRLLS-ASSI16.ads.mwn.de
+ Architecture:     win64i8
+ Platform:         Intel Windows 10 Education 6.2 9200 (Windows Compute Cluster)
+ Model:            Xeon/3826
+ Clock freq.:      3826 MHz
+ Number of CPUs:   16
+ Executable:       standard
+ Raw model ID:     6
+ Config number:    6
+ Physical memory:  65345 MB
+ Virtual memory:   75073 MB
+ Numeric format:   64-bit little-endian IEEE.
+ Bytes per word:   8
+ Disk block size:  512 bytes (64 words)
+ Remote shell cmd: "c:/program files/msc.software/msc_nastran/20181/msc20181/win64i8/mscrmtcmd.exe" (Windows non-CCS nodes, UNIX)
+                   <ccs_cmd> (Windows CCS nodes)
+----------------------------------------------------------------- 
+MSC Nastran started  Wed Apr 13 15:02:39 MS 2022 
+ 15:02:41  Beginning Analysis
+SCA Kernel 20.0.520419 successfully initialized
+BLAS/LAPACK .dll "c:\program files\msc.software\msc_nastran\20181\msc20181\win64i8\libimalloc.dll" has been loaded.
+BLAS/LAPACK .dll "c:\program files\msc.software\msc_nastran\20181\msc20181\win64i8\mkl_core.dll" has been loaded.
+BLAS/LAPACK .dll "c:\program files\msc.software\msc_nastran\20181\msc20181\win64i8\mkl_intel_thread.dll" has been loaded.
+BLAS/LAPACK .dll "c:\program files\msc.software\msc_nastran\20181\msc20181\win64i8\mkl_rt.dll" has been loaded.
+BLAS/LAPACK .dll "c:\program files\msc.software\msc_nastran\20181\msc20181\win64i8\MSCblas.dll" has been loaded.
+
+ 15:02:41  MSC Authorization Information - System Attributes (1004, 0)
+ 15:02:41  -----------------------------------------------------------
+  Date:          Wed Apr 13 15:02:41 2022
+  MSC Id:        98eecbb60c6a (ethernet) (Intel)
+  Hostname:      TULRLLS-ASSI16 (user ga58ziz, display TULRLLS-ASSI16)
+  License files: 27500@10.162.199.147
+  CEID:          5DC78D04-694F31F5
+  User:          ga58ziz
+  Display:       TULRLLS-ASSI16
+  LAPI Version:  LAPI 10.2.4 win64 :: Build 3774 20170919223700Z (FLEXlm 11.13.1.0)
+
+  * * * * * * * * * * * * * * * * * * * *
+  * * * * * * * * * * * * * * * * * * * *
+  * *                                 * *
+  * *   MSC Customer Entitlement ID   * *
+  * *        5DC78D04-694F31F5        * *
+  * *                                 * *
+  * * * * * * * * * * * * * * * * * * * *
+  * * * * * * * * * * * * * * * * * * * *
+
+ 15:02:46  MSC Authorization Information - Checkout Successful (1016, 0)
+ 15:02:46  -------------------------------------------------------------
+ 15:02:46  Acquired 13 licenses for Group MSCONE (MSC Nastran) from license server on host 10.162.199.147
+
+
+ 15:02:46  MSC Authorization Information - Checkout Successful (1016, 0)
+ 15:02:46  -------------------------------------------------------------
+ 15:02:46  Acquired 3 licenses for Group MSCONE (MSC Nastran Aero - Basic) from license server on host 10.162.199.147
+
+
+Beginning bulk data processing using the IFPStar component.
+For more information on IFPStar, please see KB article KB8019200
+on our support pages, at http://simcompanion.mscsoftware.com.
+
+ 15:02:46  Reading INCLUDE file "d:\25_Aeroelastic\aeroStruct\analysis\output\nastran_example\bahstru.dat"
+ 15:02:46  85 records read from INCLUDE file "d:\25_Aeroelastic\aeroStruct\analysis\output\nastran_example\bahstru.dat"
+ 15:02:46  Reading INCLUDE file "d:\25_Aeroelastic\aeroStruct\analysis\output\nastran_example\bahmass.dat"
+ 15:02:46  59 records read from INCLUDE file "d:\25_Aeroelastic\aeroStruct\analysis\output\nastran_example\bahmass.dat"
+ 15:02:46  Reading INCLUDE file "d:\25_Aeroelastic\aeroStruct\analysis\output\nastran_example\aero5.dat"
+ 15:02:46  67 records read from INCLUDE file "d:\25_Aeroelastic\aeroStruct\analysis\output\nastran_example\aero5.dat"
+ 15:02:46  197 records read from JID file "d:/25_aeroelastic/aerostruct/analysis/output/nastran_example/ha145b.dat"
+ 15:02:46  A total of 408 records were read from 4 files.
+
+Processing of bulk data entries is complete.
+
+ 15:02:48  Analysis started.
+ 15:02:48  Geometry access/verification to CAD part initiated (if needed).
+ 15:02:48  Geometry access/verification to CAD part successfully completed (if needed).
+ 15:02:48  Finite element model generation started.
+ 15:02:48  Finite element model generated 66 degrees of freedom.
+ 15:02:48  Finite element model generation successfully completed.
+ 15:02:48  Application of Loads and Boundary Conditions to the finite element model started.
+ 15:02:48  Application of Loads and Boundary Conditions to the finite element model successfully completed.
+ 15:02:48  Solution of the system equations for normal modes started.
+ 15:02:48  Solution of the system equations for normal modes successfully completed.
+ ================================================== 
+ Warning/Fatal Message Summary           Occurrence
+       USER WARNING MESSAGE     7697.0          1 
+ ================================================== 
+ 15:02:48  74 records read from JID file "d:/25_aeroelastic/aerostruct/analysis/output/nastran_example/ha145b.dat"
+ 15:02:48  NSEXIT: EXIT(0)
+ 15:02:48  Analysis complete  0
+Real:        7.442 seconds ( 0:00:07.442)
+User:        0.718 seconds ( 0:00:00.718)
+Sys:         1.406 seconds ( 0:00:01.406)
+MSC Nastran finished Wed Apr 13 15:02:48 MS 2022 

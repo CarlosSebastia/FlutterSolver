@@ -1,0 +1,151 @@
+MSC Nastran V2018.1 (Intel Windows 10 Education 6.2 9200) Control File: 
+----------------------------------------------------------------- 
+$ sysfield=SCR*(RAW=YES,BUFFIO=YES,wnum=16,wsize=16mb) $(c:/program files/msc.software/msc_nastran/20181/conf/nast20181.rcf[2])
+$ sysfield=DBALL(RAW=YES,BUFFIO=YES,wnum=16,wsize=16mb) $(c:/program files/msc.software/msc_nastran/20181/conf/nast20181.rcf[3])
+Nastran BUFFSIZE=8193 $(c:/program files/msc.software/msc_nastran/20181/conf/nast20181.rcf[6])
+JID='z:/solver/sol145b/ha145b.dat'
+OUT='./ha145b'
+MEM=8155MB      $ 
+MACH='Intel'
+OPER='Windows 10 Education'
+OSV='6.2 9200'
+MODEL='Xeon/3717 (TULRLLS-STUD03)'
+NPROC='8'
+CONFIG=6
+NPROC=8
+symbol=DELDIR='c:/program files/msc.software/msc_nastran/20181/msc20181/nast/del' $(program default)
+symbol=DEMODIR='c:/program files/msc.software/msc_nastran/20181/msc20181/nast/demo' $(program default)
+symbol=LM_NO_SNMP=1 $(c:/program files/msc.software/msc_nastran/20181/conf/nast20181.rcf[10])
+symbol=MKL_INTERFACE_LAYER=ILP64 $(c:/program files/msc.software/msc_nastran/20181/conf/nast20181.rcf[1])
+symbol=SSSALTERDIR='c:/program files/msc.software/msc_nastran/20181/msc20181/nast/sssalter' $(program default)
+symbol=TPLDIR='c:/program files/msc.software/msc_nastran/20181/msc20181/nast/tpl' $(program default)
+SDIR='c:/scratch/ha145b.T17420_3'
+DBS='c:/scratch/ha145b.T17420_3'
+SCR='yes'
+SMEM=100
+BPOOL=2038.8MB
+DMPMEM=estimate
+NEWDEL='c:/program files/msc.software/msc_nastran/20181/msc20181/win64i8/sss'
+DEL='MSCDEF'
+DML=MSCDEF
+SDL=MSCDEF
+AUTH='1700@license2.lrz.de'
+AUTHQUE=20
+MSGCAT='c:/program files/msc.software/msc_nastran/20181/msc20181/win64i8/analysis.msg'
+MSGDEST='f06'
+NEWS='c:/program files/msc.software/msc_nastran/20181/msc20181/nast/news.txt'
+----------------------------------------------------------------- 
+MSC_ISHELLPATH=C:\Program Files\MSC.Software\MSC_Nastran\20181\msc20181\actran\win64\Actran_18.0.b.107480\bin;C:\Program Files\MSC.Software\MSC_Nastran\20181\msc20181\nast; 
+MSC_JIDPATH= 
+PATH=c:\program files\msc.software\msc_nastran\20181\msc20181\win64i8;c:\program files\msc.software\msc_nastran\20181\msc20181\win64i8\nCode\bin;c:\program files\msc.software\msc_nastran\20181\msc20181\win64i8\nvidia;c:\program files\msc.software\msc_nastran\20181\msc20181\win64i8\lib;c:\program files\msc.software\msc_nastran\20181\msc20181\win64i8;C:\WINDOWS\CCM\;C:\Program Files (x86)\IntelSWTools\compilers_and_libraries_2018.3.210\windows\mpi\intel64\bin;C:\SIMULIA\Commands;C:\Program Files\Microsoft MPI\Bin\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\Program Files\Java\OpenJDK_11.0.2\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\WINDOWS\system32\config\systemprofile\AppData\Local\Microsoft\WindowsApps;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\110\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\120\Tools\Binn\;C:\Program Files\M;C:\Program Files (x86)\PuTTY\;C:\Users\ga74mel\AppData\Local\Microsoft\WindowsApps; 
+SCA_SERVICE_CATALOG=c:\program files\msc.software\msc_nastran\20181\msc20181\res\SCAServiceCatalog.xml 
+SCA_RESOURCE_DIR=c:\program files\msc.software\msc_nastran\20181\msc20181\res 
+Cmd Line:    C:\Program Files\MSC.Software\MSC_Nastran\20181\msc20181\win64i8\nastran.exe JID=Z:\Solver\sol145b\ha145b.dat 
+Current Dir: Z:\Solver\sol145b 
+Time Cmd:    c:\program files\msc.software\msc_nastran\20181\msc20181\win64i8\msctime 
+Executable:  c:\program files\msc.software\msc_nastran\20181\msc20181\win64i8\analysis.exe 
+Arch= Kywd:  [Not specified]  
+MSC_MSG:     stderr  
+FPE:         yes  
+----------------------------------------------------------------- 
+Current resource limits:
+ Physical memory:                    16310 MB
+ Physical memory available:           3038 MB
+ Paging file size:                   30310 MB
+ Paging file size available:         11662 MB
+ Virtual memory:                 134217727 MB
+ Virtual memory available:       134213509 MB
+----------------------------------------------------------------- 
+System configuration:
+ Hostname:         TULRLLS-STUD03.ads.mwn.de
+ Architecture:     win64i8
+ Platform:         Intel Windows 10 Education 6.2 9200 (Windows Compute Cluster)
+ Model:            Xeon/1433
+ Clock freq.:      1433 MHz
+ Number of CPUs:   8
+ Executable:       standard
+ Raw model ID:     6
+ Config number:    6
+ Physical memory:  16310 MB
+ Virtual memory:   30310 MB
+ Numeric format:   64-bit little-endian IEEE.
+ Bytes per word:   8
+ Disk block size:  512 bytes (64 words)
+ Remote shell cmd: "c:/program files/msc.software/msc_nastran/20181/msc20181/win64i8/mscrmtcmd.exe" (Windows non-CCS nodes, UNIX)
+                   <ccs_cmd> (Windows CCS nodes)
+----------------------------------------------------------------- 
+MSC Nastran started  Wed Jun 22 17:01:03 MS 2022 
+ 17:01:05  Beginning Analysis
+SCA Kernel 20.0.520419 successfully initialized
+BLAS/LAPACK .dll "c:\program files\msc.software\msc_nastran\20181\msc20181\win64i8\libimalloc.dll" has been loaded.
+BLAS/LAPACK .dll "c:\program files\msc.software\msc_nastran\20181\msc20181\win64i8\mkl_core.dll" has been loaded.
+BLAS/LAPACK .dll "c:\program files\msc.software\msc_nastran\20181\msc20181\win64i8\mkl_intel_thread.dll" has been loaded.
+BLAS/LAPACK .dll "c:\program files\msc.software\msc_nastran\20181\msc20181\win64i8\mkl_rt.dll" has been loaded.
+BLAS/LAPACK .dll "c:\program files\msc.software\msc_nastran\20181\msc20181\win64i8\MSCblas.dll" has been loaded.
+
+ 17:01:14  MSC Authorization Information - System Attributes (1004, 0)
+ 17:01:14  -----------------------------------------------------------
+  Date:          Wed Jun 22 17:01:14 2022
+  MSC Id:        f8b1569eeada (ethernet) (Intel)
+  Hostname:      TULRLLS-STUD03 (user ga74mel, display NIFTYTOP)
+  License files: 1700@license2.lrz.de
+  CEID:          244FE993-5B6B534G
+  User:          ga74mel
+  Display:       NIFTYTOP
+  LAPI Version:  LAPI 10.2.4 win64 :: Build 3774 20170919223700Z (FLEXlm 11.13.1.0)
+
+  * * * * * * * * * * * * * * * * * * * *
+  * * * * * * * * * * * * * * * * * * * *
+  * *                                 * *
+  * *   MSC Customer Entitlement ID   * *
+  * *        244FE993-5B6B534G        * *
+  * *                                 * *
+  * * * * * * * * * * * * * * * * * * * *
+  * * * * * * * * * * * * * * * * * * * *
+
+ 17:01:20  MSC Authorization Information - Checkout Successful (1016, 0)
+ 17:01:20  -------------------------------------------------------------
+ 17:01:20  Acquired 1 license for MSC Nastran from license server on host license2.lrz.de
+
+
+ 17:01:24  MSC Authorization Information - Checkout Successful (1016, 0)
+ 17:01:24  -------------------------------------------------------------
+ 17:01:24  Acquired 1 license for MSC Nastran Aero - Basic from license server on host license2.lrz.de
+
+
+Beginning bulk data processing using the IFPStar component.
+For more information on IFPStar, please see KB article KB8019200
+on our support pages, at http://simcompanion.mscsoftware.com.
+
+ 17:01:24  Reading INCLUDE file "z:\Solver\sol145b\bahstru.dat"
+ 17:01:24  85 records read from INCLUDE file "z:\Solver\sol145b\bahstru.dat"
+ 17:01:24  Reading INCLUDE file "z:\Solver\sol145b\bahmass.dat"
+ 17:01:24  59 records read from INCLUDE file "z:\Solver\sol145b\bahmass.dat"
+ 17:01:24  Reading INCLUDE file "z:\Solver\sol145b\aero5.dat"
+ 17:01:24  67 records read from INCLUDE file "z:\Solver\sol145b\aero5.dat"
+ 17:01:24  197 records read from JID file "z:/solver/sol145b/ha145b.dat"
+ 17:01:24  A total of 408 records were read from 4 files.
+
+Processing of bulk data entries is complete.
+
+ 17:01:25  Analysis started.
+ 17:01:25  Geometry access/verification to CAD part initiated (if needed).
+ 17:01:25  Geometry access/verification to CAD part successfully completed (if needed).
+ 17:01:29  Finite element model generation started.
+ 17:01:29  Finite element model generated 66 degrees of freedom.
+ 17:01:29  Finite element model generation successfully completed.
+ 17:01:29  Application of Loads and Boundary Conditions to the finite element model started.
+ 17:01:29  Application of Loads and Boundary Conditions to the finite element model successfully completed.
+ 17:01:29  Solution of the system equations for normal modes started.
+ 17:01:29  Solution of the system equations for normal modes successfully completed.
+ ================================================== 
+ Warning/Fatal Message Summary           Occurrence
+       USER WARNING MESSAGE     7697.0          1 
+ ================================================== 
+ 17:01:29  74 records read from JID file "z:/solver/sol145b/ha145b.dat"
+ 17:01:29  NSEXIT: EXIT(0)
+ 17:01:29  Analysis complete  0
+Real:       24.925 seconds ( 0:00:24.925)
+User:        1.015 seconds ( 0:00:01.015)
+Sys:         1.640 seconds ( 0:00:01.640)
+MSC Nastran finished Wed Jun 22 17:01:30 MS 2022 

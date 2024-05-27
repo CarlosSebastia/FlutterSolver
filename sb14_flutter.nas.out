@@ -1,0 +1,2472 @@
+
+
+
+
+
+
+                                  ****
+                                *      *
+                               *        *
+                               *  N A S T R A N
+                               *        *
+                                *      *
+                                  ****
+
+
+                            INTEL COMPUTER SYSTEMS   
+                                 LINUX VERSION 
+
+                          SYSTEM RELEASE -  1995 ED.
+
+                                DISTRIBUTED BY
+
+         COMPUTER SOFTWARE MANAGEMENT AND INFORMATION CENTER (COSMIC)
+                 UNIVERSITY OF GEORGIA, ATHENS, GEORGIA 30602
+                 PHONE: (706)542-3265      FAX: (706)542-4807
+1                                                                           /    95 INTEL LINUX NASTRAN    / OCT  4, 22 / PAGE     2
+                                                                                                                                    
+0                                                                                                                                   
+                                                                                                         
+                                                                                                         
+                         INSTALLATION CENTER USER INFORMATION GIVEN IN THIS SECTION                      
+                                                                                                         
+                                     *********************************************                       
+                                     *                                           *                       
+                                     *  PLEASE READ THE COMMENT IN DEMO PROBLEM  *                       
+                                     *  D01002A ABOUT SYSTEM TIMING CONSTANTS    *                       
+                                     *                                           *                       
+                                     *********************************************                       
+                                                                                                         
+                         ===X=    TOP OF PAGE REQUEST IF 'X' IS REPLACED BY '='                          
+                                                                                                         
+1                                                                           /    95 INTEL LINUX NASTRAN    / OCT  4, 22 / PAGE     3
+                                                                                                                                    
+0                                                                                                                                   
+0*** USER INFORMATION MESSAGE 225, GINO TIME CONSTANTS ARE BEING COMPUTED
+     (SEE NASINFO FILE FOR ELIMINATION OF THESE COMPUTATIONS)
+1                                                                           /    95 INTEL LINUX NASTRAN    / OCT  4, 22 / PAGE     4
+                                                                                                                                    
+0        N A S T R A N    E X E C U T I V E    C O N T R O L    D E C K    E C H O                                                  
+0                                                                                                                                   
+                                                                                                                                    
+                                                                                                                                    
+     ID SB14,NASTRAN                                                                 
+     $                                                                               
+     $SOL   MODES                                                                    
+     $TIME  10                                                                       
+     $DIAG 14,18                                                                     
+     $ALTER 83                                                                       
+     $OUTPUT4   MGG ,,,,//0/14/3                                                     
+     $OUTPUT4   KGG ,,,,//0/15/3                                                     
+     $ENDALTER                                                                       
+     $                                                                               
+     APP   AERO                                                                      
+     SOL   10                                                                        
+     TIME  10                                                                        
+     DIAG  14,18                                                                     
+     ALTER 64                                                                        
+     $OUTPUT4   MAA,KAA,PHIA,,//0/17/3                                               
+     TABPRT    EQEXIN // C,N,EQEXIN                                                  
+     ALTER 93                                                                        
+     OUTPUT4   PHIG,,,,//0/14/3                                                      
+     OUTPUT4   MHH,,,,//0/15/3                                                       
+     OUTPUT4   BHH,,,,//0/16/3                                                       
+     OUTPUT4   KHH,,,,//0/17/3                                                       
+     OUTPUT4   QHHL,,,,//0/18/3                                                      
+     $OUTPUT4   AJJL,SKJ,D1JK,D2JK,GTKA//0/19/3                                      
+     ENDALTER                                                                        
+     $                                                                               
+     $------------------------------------------------------------------------       
+     CEND                                                                            
+1     SB14 FLUTTER ANALYSIS                                                 /    95 INTEL LINUX NASTRAN    / OCT  4, 22 / PAGE     5
+      BLOCKED CONTROLS                                                                                                              
+0                                                                                                                                   
+0                                        C A S E    C O N T R O L   D E C K   E C H O                                               
+                 CARD                                                                                                               
+                 COUNT                                                                                                              
+                  1      $                                                                               
+                  2      TITLE = SB14 FLUTTER ANALYSIS                                                   
+                  3      SUBTITLE = BLOCKED CONTROLS                                                     
+                  4      ECHO = PUNCH                                                                    
+                  5      $LINES = 999999                                                                 
+                  6      SUBCASE 10                                                                      
+                  7      $  SDAMP  = 30        $ Modal Damping                                           
+                  8        METHOD = 10                                                                   
+                  9        FMETHOD = 30                                                                  
+                 10        SPC = 100                                                                     
+                 11        DISPLACEMENT(PUNCH) = ALL                                                     
+                 12        GPFORCE = ALL                                                                 
+                 13      $ APRESSURE  = ALL                                                              
+                 14      $  AEROF   = ALL                                                                
+                 15      $                                                                               
+                 16      $...1...|...2...|...3...|...4...|...5...|...6...|...7...|...8...|...9...|..10...
+                 17      $                                                                               
+                 18      BEGIN BULK                                                                      
+
+
+                        (NO. OF UNSORTED BULK DATA CARDS READ =  2634, INCLUDING   0 COMMENT CARDS)
+0*** USER INFORMATION MESSAGE 207, BULK DATA DECK IS NOT SORTED. NASTRAN WILL RE-ORDER THE INPUT DECK.
+0*** USER INFORMATION MESSAGE, THE FOLLOWING PROPERTY IDS ARE PRESENT BUT NOT USED -
+
+          5050     6590
+1     SB14 FLUTTER ANALYSIS                                                 /    95 INTEL LINUX NASTRAN    / OCT  4, 22 / PAGE     6
+      BLOCKED CONTROLS                                                                                                              
+0                                                                                                                                   
+0         COSMIC / NASTRAN DMAP COMPILER - SOURCE LISTING                                                                           
+                                                                                                                                    
+                                                                                                                                    
+0  OPTIONS IN EFFECT GO      ERR=2   LIST    NODECK  NOREF   NOOSCAR 
+   -----------------
+
+
+       1  BEGIN    AERO 10 - MODAL FLUTTER ANALYSIS - APR. 1995 $                 
+
+       2  PRECHK   ALL $                                                          
+
+       3  FILE     PHIHL=APPEND/AJJL=APPEND/FSAVE=APPEND/CASEYY=APPEND/           
+                   CLAMAL=APPEND/OVG=APPEND/QHHL=APPEND/SKJ=APPEND/QHJL=APPEND/   
+                   QKHL=APPEND/ $                                                 
+
+       4  PARAM    //*MPY*/CARDNO/0/0 $                                           
+
+       5  GP1      GEOM1,GEOM2,/GPL,EQEXIN,GPDT,CSTM,BGPDT,SIL/S,N,LUSET/         
+                   S,N,NOGPDT/MINUS1=-1 $                                         
+
+       6  ANISOP   GEOM1,EPT,BGPDT,EQEXIN,MPT/MPTA/S,N,ISOP $                     
+
+       7  EQUIV    MPTA,MPT/ISOP $                                                
+
+       8  COND     ERROR5,NOGPDT $                                                
+
+       9  GP2      GEOM2,EQEXIN/ECT $                                             
+
+      10  PARAML   PCDB//*PRES*////JUMPPLOT $                                     
+
+      11  GP3      GEOM3,EQEXIN,GEOM2/,GPTT/NOGRAV $                              
+
+      12  TA1      ECT,EPT,BGPDT,SIL,GPTT,CSTM,MPT,EQEXIN/EST,GEI,GPECT,,,MPTX,   
+                   PCOMPS,EPTX/LUSET/S,N,NOSIMP/1/S,N,NOGENL/GENEL/S,N,COMPS $    
+
+      13  EQUIV    MPTX,MPT/COMPS/EPTX,EPT/COMPS $                                
+
+      14  COND     ERROR1,NOSIMP $                                                
+
+      15  PARAM    //*ADD*/NOKGGX/1/0 $                                           
+
+      16  PARAM    //*ADD*/NOMGG /1/0 $                                           
+
+      17  EMG      EST,CSTM,MPT,DIT,GEOM2,/KELM,KDICT,MELM,MDICT,,,/S,N,NOKGGX/   
+                   S,N,NOMGG////C,Y,COUPMASS/C,Y,CPBAR/C,Y,CPROD/                 
+                   C,Y,CPQUAD1/C,Y,CPQUAD2/C,Y,CPTRIA1/C,Y,CPTRIA2/C,Y,CPTUBE/    
+                   C,Y,CPQDPLT/C,Y,CPTRPLT/C,Y,CPTRBSC/                           
+                   C,Y,VOLUME/C,Y,SURFACE $                                       
+1     SB14 FLUTTER ANALYSIS                                                 /    95 INTEL LINUX NASTRAN    / OCT  4, 22 / PAGE     7
+      BLOCKED CONTROLS                                                                                                              
+
+                                                                                                                                    
+
+          COSMIC / NASTRAN DMAP COMPILER - SOURCE LISTING                                                                           
+                                                                                                                                    
+                                                                                                                                    
+
+      18  PURGE    KGGX/NOKGGX $                                                  
+
+      19  COND     JMPKGGX,NOKGGX $                                               
+
+      20  EMA      GPECT,KDICT,KELM/KGGX $                                        
+
+      21  PURGE    KDICT,KELM/MINUS1 $                                            
+
+      22  LABEL    JMPKGGX $                                                      
+
+      23  COND     ERROR1,NOMGG $                                                 
+
+      24  EMA      GPECT,MDICT,MELM/MGG/-1/C,Y,WTMASS=1.0 $                       
+
+      25  PURGE    MDICT,MELM/MINUS1 $                                            
+
+      26  COND     LGPWG,GRDPNT $                                                 
+
+      27  GPWG     BGPDT,CSTM,EQEXIN,MGG/OGPWG/V,Y,GRDPNT=-1/C,Y,WTMASS $         
+
+      28  OFP      OGPWG,,,,,//S,N,CARDNO $                                       
+
+      29  LABEL    LGPWG $                                                        
+
+      30  EQUIV    KGGX,KGG/NOGENL $                                              
+
+      31  COND     LBL11,NOGENL $                                                 
+
+      32  SMA3     GEI,KGGX/KGG/LUSET/NOGENL/NOSIMP $                             
+
+      33  LABEL    LBL11 $                                                        
+
+      34  GPSTGEN  KGG,SIL/GPST $                                                 
+
+      35  GP4      CASECC,GEOM4,EQEXIN,GPDT,BGPDT,CSTM,GPST/RG,,USET,             
+                   ASET,OGPST/LUSET/S,N,MPCF1/S,N,MPCF2/S,N,SINGLE/S,N,OMIT/      
+                   S,N,REACT/0/REPEAT/S,N,NOSET/S,N,NOL/S,N,NOA/                  
+                   C,Y,ASETOUT/C,Y,AUTOSPC $                                      
+
+      36  OFP      OGPST,,,,,//S,N,CARDNO $                                       
+
+      37  EQUIV    KGG,KNN/MPCF1/MGG,MNN/MPCF1 $                                  
+
+      38  PURGE    GM/MPCF1/DM,MR/REACT $                                         
+
+      39  COND     LBL2,MPCF1 $                                                   
+1     SB14 FLUTTER ANALYSIS                                                 /    95 INTEL LINUX NASTRAN    / OCT  4, 22 / PAGE     8
+      BLOCKED CONTROLS                                                                                                              
+
+                                                                                                                                    
+
+          COSMIC / NASTRAN DMAP COMPILER - SOURCE LISTING                                                                           
+                                                                                                                                    
+                                                                                                                                    
+
+      40  MCE1     USET,RG/GM $                                                   
+
+      41  MCE2     USET,GM,KGG,MGG,,/KNN,MNN,, $                                  
+
+      42  LABEL    LBL2 $                                                         
+
+      43  EQUIV    KNN,KFF/SINGLE/MNN,MFF/SINGLE $                                
+
+      44  COND     LBL3,SINGLE $                                                  
+
+      45  SCE1     USET,KNN,MNN,,/KFF,KFS,,MFF,, $                                
+
+      46  LABEL    LBL3 $                                                         
+
+      47  EQUIV    KFF,KAA/OMIT/ MFF,MAA/OMIT $                                   
+
+      48  PURGE    GO/OMIT $                                                      
+
+      49  COND     LBL5,OMIT $                                                    
+
+      50  PARAM    //*PREC*/PREC $                                                
+
+      51  SMP1     USET,KFF,,,/GO,KAA,KOO,LOO,,,,, $                              
+
+      52  SMP2     USET,GO,MFF/MAA $                                              
+
+      53  LABEL    LBL5 $                                                         
+
+      54  COND     LBL6,REACT $                                                   
+
+      55  RBMG1    USET,KAA,MAA/KLL,KLR,KRR,MLL,MLR,MRR $                         
+
+      56  RBMG2    KLL/LLL/ $                                                     
+
+      57  RBMG3    LLL,KLR,KRR/DM $                                               
+
+      58  RBMG4    DM,MLL,MLR,MRR/MR $                                            
+
+      59  LABEL    LBL6 $                                                         
+
+      60  DPD      DYNAMICS,GPL,SIL,USET/GPLD,SILD,USETD,TFPOOL,,,,,,EED,EQDYN/   
+                   LUSET/S,N,LUSETD/NOTFL/NODLT/NOPSDL/NOFRL/                     
+                   NONLFT/NOTRL/S,N,NOEED/123/S,N,NOUE $                          
+
+      61  COND     ERROR2,NOEED $                                                 
+1     SB14 FLUTTER ANALYSIS                                                 /    95 INTEL LINUX NASTRAN    / OCT  4, 22 / PAGE     9
+      BLOCKED CONTROLS                                                                                                              
+
+                                                                                                                                    
+
+          COSMIC / NASTRAN DMAP COMPILER - SOURCE LISTING                                                                           
+                                                                                                                                    
+                                                                                                                                    
+
+      62  EQUIV    GO,GOD/NOUE/GM,GMD/NOUE $                                      
+
+      63  READ     KAA,MAA,MR,DM,EED,USET,CASECC/LAMA,PHIA,MI,OEIGS/*MODES*/S,N,  
+                   NEIGV $                                                        
+
+      64  OFP      OEIGS,,,,,//S,N,CARDNO $                                       
+
+      64  TABPRT    EQEXIN // C,N,EQEXIN                                          
+
+      65  COND     ERROR4,NEIGV $                                                 
+
+      66  OFP      LAMA,,,,,//S,N,CARDNO $                                        
+
+      67  MTRXIN   CASECC,MATPOOL,EQDYN,,TFPOOL/K2PP,M2PP,B2PP/LUSETD/S,N,        
+                   NOK2PP/S,N,NOM2PP/S,N,NOB2PP $                                 
+
+      68  EQUIV    M2PP,M2DD/NOA/B2PP,B2DD/NOA/K2PP,K2DD/NOA $                    
+
+      69  GKAD     USETD,GM,GO,,,,,K2PP,M2PP,B2PP/,,,GMD,GOD,K2DD,M2DD,B2DD/      
+                   *CMPLEV*/*DISP*/*MODAL*/0.0/0.0/0.0/NOK2PP/                    
+                   NOM2PP/NOB2PP/MPCF1/SINGLE/OMIT/NOUE/                          
+                   -1/-1/   -1/-1 $                                               
+
+      70  GKAM     USETD,PHIA,,LAMA,DIT,M2DD,B2DD,K2DD,CASECC/MHH,BHH,KHH,        
+                   PHIDH/NOUE/C,Y,LMODES=0/C,Y,LFREQ=0./C,Y,HFREQ=-1.0/           
+                   NOM2PP/NOB2PP/NOK2PP/S,N,NONCUP/S,N,FMODE/C,Y,KDAMP $          
+
+      71  APD      EDT,EQDYN,ECT,BGPDT,SILD,USETD,CSTM,GPLD/EQAERO,ECTA,BGPA,SILA,
+                   USETA,SPLINE,AERO,ACPT,FLIST,CSTMA,GPLA,SILGA/S,N,NK/S,N,NJ/   
+                   S,N,LUSETA/S,N,BOV $                                           
+
+      72  PARAM    //*MPY*/PFILE/0/1 $                                            
+
+      73  PURGE    PLTSETA,PLTPARA,GPSETSA,ELSETSA/JUMPPLOT $                     
+
+      74  COND     SKPPLT,JUMPPLOT $                                              
+
+      75  PARAM    //*MPY*/PLTFLG/0/1 $                                           
+
+      76  PLTSET   PCDB,EQAERO,ECTA,/PLTSETA,PLTPARA,GPSETSA,ELSETSA/S,N,NSIL1/   
+                   S,N,JUMPPLOT $                                                 
+
+      77  PRTMSG   PLTSETA // $                                                   
+
+      78  COND     SKPPLT,JUMPPLOT $                                              
+1     SB14 FLUTTER ANALYSIS                                                 /    95 INTEL LINUX NASTRAN    / OCT  4, 22 / PAGE    10
+      BLOCKED CONTROLS                                                                                                              
+
+                                                                                                                                    
+
+          COSMIC / NASTRAN DMAP COMPILER - SOURCE LISTING                                                                           
+                                                                                                                                    
+                                                                                                                                    
+
+      79  PLOT     PLTPARA,GPSETSA,ELSETSA,CASECC,BGPA,EQAERO,    ,,,,,,/PLOTX2/  
+                   NSIL1/LUSETA/S,N,JUMPPLOT/S,N,PLTFLG/S,N,PFILE $               
+
+      80  PRTMSG   PLOTX2 // $                                                    
+
+      81  LABEL    SKPPLT $                                                       
+
+      82  COND     ERROR2,NOEED $                                                 
+
+      83  GI       SPLINE,USET ,CSTMA,BGPA,SIL , ,GM,GO/GTKA/NK/LUSET $           
+
+      84  PARAM    //*ADD*/DESTRY/0/1/ $                                          
+
+      85  AMG      AERO,ACPT/AJJL,SKJ,D1JK,D2JK/NK/NJ/S,N,DESTRY $                
+
+      86  COND     NODJE,    NODJE $                                              
+
+      87  INPUTT2  /D1JE,D2JE,,,/C,Y,P1=0/C,Y,P2=11/C,Y,P3=XXXXXXXX $             
+
+      88  LABEL    NODJE $                                                        
+
+      89  PARAM    //*ADD*/XQHHL/1/0 $                                            
+
+      90  AMP      AJJL,SKJ,D1JK,D2JK,GTKA,PHIDH,D1JE,D2JE,USETD,AERO/QHHL,QKHL,  
+                   QHJL/NOUE/S,N,XQHHL/V,Y,GUSTAERO=-1 $                          
+
+      91  PARAM    //*MPY*/FLOOP/V,Y,NODJE=-1/0 $                                 
+
+      92  LABEL    LOOPTOP $                                                      
+
+      93  FA1      KHH,BHH,MHH,QHHL,CASECC,FLIST/FSAVE,KXHH,BXHH,MXHH/            
+                   S,N,FLOOP/S,N,TSTART/S,N,NOCEAD $                              
+
+      93  OUTPUT4   PHIG,,,,//0/14/3                                              
+
+      93  OUTPUT4   MHH,,,,//0/15/3                                               
+
+      93  OUTPUT4   BHH,,,,//0/16/3                                               
+
+      93  OUTPUT4   KHH,,,,//0/17/3                                               
+
+      93  OUTPUT4   QHHL,,,,//0/18/3                                              
+
+      94  EQUIV    KXHH,PHIH/NOCEAD/BXHH,CLAMA/NOCEAD/KXHH,PHIHL/NOCEAD/BXHH,     
+                   CLAMAL/NOCEAD/CASECC,CASEYY/NOCEAD $                           
+1     SB14 FLUTTER ANALYSIS                                                 /    95 INTEL LINUX NASTRAN    / OCT  4, 22 / PAGE    11
+      BLOCKED CONTROLS                                                                                                              
+
+                                                                                                                                    
+
+          COSMIC / NASTRAN DMAP COMPILER - SOURCE LISTING                                                                           
+                                                                                                                                    
+                                                                                                                                    
+
+      95  COND     VDR,NOCEAD $                                                   
+
+      96  CEAD     KXHH,BXHH,MXHH,EED,CASECC/PHIH,CLAMA,OCEIGS,/S,N,EIGVS $       
+
+      97  COND     LBLZAP,EIGVS $                                                 
+
+      98  LABEL    VDR $                                                          
+
+      99  VDR      CASECC,EQDYN ,USETD,PHIH,CLAMA,,/OPHIH,/*CEIGEN*/*MODAL*/      
+                   123/S,N,NOH/S,N,NOP/FMODE $                                    
+
+     100  COND     LBL16,NOH $                                                    
+
+     101  OFP      OPHIH,,,,,//S,N,CARDNO $                                       
+
+     102  LABEL    LBL16 $                                                        
+
+     103  FA2      PHIH,CLAMA,FSAVE/    PHIHL,CLAMAL,CASEYY,OVG/S,N,TSTART/       
+                   C,Y,VREF=1.0/C,Y,PRINT=YES $                                   
+
+     104  COND     CONTINUE,TSTART $                                              
+
+     105  LABEL    LBLZAP $                                                       
+
+     106  COND     CONTINUE,FLOOP $                                               
+
+     107  REPT     LOOPTOP,100 $                                                  
+
+     108  JUMP     ERROR3 $                                                       
+
+     109  LABEL    CONTINUE $                                                     
+
+     110  PARAML   XYCDB//*PRES*////NOXYCDB $                                     
+
+     111  COND     NOXYOUT,NOXYCDB $                                              
+
+     112  XYTRAN   XYCDB,OVG,,,,/XYPLTCE/*VG*/*PSET*/S,N,PFILE/S,N,CARDNO/        
+                   S,N,NOXYPL $                                                   
+
+     113  COND     NOXYOUT,NOXYPL $                                               
+
+     114  XYPLOT   XYPLTCE// $                                                    
+
+     115  LABEL    NOXYOUT $                                                      
+
+     116  PARAM    //*AND*/PJUMP/NOP=-1/JUMPPLOT $                                
+1     SB14 FLUTTER ANALYSIS                                                 /    95 INTEL LINUX NASTRAN    / OCT  4, 22 / PAGE    12
+      BLOCKED CONTROLS                                                                                                              
+
+                                                                                                                                    
+
+          COSMIC / NASTRAN DMAP COMPILER - SOURCE LISTING                                                                           
+                                                                                                                                    
+                                                                                                                                    
+
+     117  COND     FINIS,PJUMP $                                                  
+
+     118  MODACC   CASEYY,CLAMAL,PHIHL,,,/CLAMAL1,CPHIH1,CASEZZ,,/*CEIGN* $       
+
+     119  ADR      CPHIH1,CASEZZ,QKHL,CLAMAL1,SPLINE,SILA,USETA/PKF/BOV/          
+                   C,Y,MACH = 0.0/*FLUTTER* $                                     
+
+     120  DDR1     CPHIH1,PHIDH/CPHID $                                           
+
+     121  EQUIV    CPHID ,CPHIP/NOA $                                             
+
+     122  PURGE    QPC/NOA $                                                      
+
+     123  COND     LBL14,NOA $                                                    
+
+     124  SDR1     USETD,,CPHID ,,,GOD,GMD,,KFS,,/CPHIP,,QPC/1 /*DYNAMICS* $      
+
+     125  LABEL    LBL14 $                                                        
+
+     126  EQUIV    CPHID ,CPHIA/NOUE $                                            
+
+     127  COND     LBLNOE,NOUE $                                                  
+
+     128  VEC      USETA/RP/*D*/*A*/*E* $                                         
+
+     129  PARTN    CPHID ,,RP/CPHIA,,,/1/3 $                                      
+
+     130  LABEL    LBLNOE $                                                       
+
+     131  MPYAD    GTKA,CPHIA,/CPHIK/1/1/0/PREC $                                 
+
+     132  UMERGE   USETA,CPHIP,/CPHIPS/*PS*/*P*/*SA* $                            
+
+     133  UMERGE   USETA,CPHIPS,CPHIK/CPHIPA/*PA*/*PS*/*K* $                      
+
+     134  UMERGE   USETA,QPC,/QPAC/*PA*/*P*/*K* $                                 
+
+     135  SDR2     CASEZZ,CSTMA,MPT,DIT,EQAERO,SILA,,,BGPA,CLAMAL1,QPAC,CPHIPA,   
+                   EST,,,/,OQPAC1,OCPHIPA,OESC1,OEFC1,PCPHIPA,,/*CEIGN* $         
+
+     136  OFP      OCPHIPA,OQPAC1,OESC1,OEFC1,,//S,N,CARDNO $                     
+
+     137  COND     FINIS,JUMPPLOT $                                               
+
+     138  PLOT     PLTPARA,GPSETSA,ELSETSA,CASEZZ,BGPA,EQAERO,SILGA,,PCPHIPA,,,,  
+1     SB14 FLUTTER ANALYSIS                                                 /    95 INTEL LINUX NASTRAN    / OCT  4, 22 / PAGE    13
+      BLOCKED CONTROLS                                                                                                              
+0                                                                                                                                   
+0         COSMIC / NASTRAN DMAP COMPILER - SOURCE LISTING                                                                           
+                                                                                                                                    
+                                                                                                                                    
+                   /PLOTX3/NSIL1/LUSETA/JUMPPLOT/PLTFLG/S,N,                      
+                   PFILE $                                                        
+
+     139  PRTMSG   PLOTX3// $                                                     
+
+     140  JUMP     FINIS $                                                        
+
+     141  LABEL    ERROR3 $                                                       
+
+     142  PRTPARM  //-3/*FLUTTER* $                                               
+
+     143  LABEL    ERROR2 $                                                       
+
+     144  PRTPARM  //-2/*FLUTTER* $                                               
+
+     145  LABEL    ERROR1 $                                                       
+
+     146  PRTPARM  //-1/*FLUTTER* $                                               
+
+     147  LABEL    ERROR4 $                                                       
+
+     148  PRTPARM  //-4/*FLUTTER* $                                               
+
+     149  LABEL    ERROR5 $                                                       
+
+     150  PRTPARM  //-5/*FLUTTER* $                                               
+
+     151  LABEL    FINIS $                                                        
+
+     152  PURGE    DUMMY/MINUS1 $                                                 
+
+     153  END      $                                                              
+1     SB14 FLUTTER ANALYSIS                                                 /    95 INTEL LINUX NASTRAN    / OCT  4, 22 / PAGE    14
+      BLOCKED CONTROLS                                                                                                              
+0                                                                                                                                   
+0                                                                                                                                   
+                                                                                                                                    
+                                                                                                                                    
+
+ *** USER POTENTIALLY FATAL MESSAGE  22,
+                              POSSIBLE ERROR IN DMAP INSTRUCTION OUTPUT4    INSTRUCTION NO.  93
+     DATA BLOCK NAMED PHIG     APPEARS AS INPUT BEFORE BEING DEFINED
+1     SB14 FLUTTER ANALYSIS                                                 /    95 INTEL LINUX NASTRAN    / OCT  4, 22 / PAGE    15
+      BLOCKED CONTROLS                                                                                                              
+0                                                                                                                                   
+0*** USER INFORMATION MESSAGES FROM RESEQUENCING PROCESSOR - BANDIT     (CRI= 1,  MTH= 3,  MPC= 0,  DEP=-1,  PCH=-1)
+
+                               BEFORE RESEQUENCING - - -
+                                        BANDWIDTH          420
+                                        PROFILE           7459
+                                        MAX WAVEFRONT       31
+                                        AVG WAVEFRONT   16.145
+                                        RMS WAVEFRONT   17.470
+                                        RMS BANDWIDTH   53.236
+
+                               AFTER RESEQUENCING BY GIBBS-POOLE-STOCKMEYER (GPS) ALGORITHM - - -
+                                        BANDWIDTH           40
+                                        PROFILE          10043
+                                        MAX WAVEFRONT       36
+                                        AVG WAVEFRONT   21.738
+                                        RMS WAVEFRONT   23.632
+                                        RMS BANDWIDTH   25.630
+
+
+                                                     *** BANDIT SUMMARY ***
+
+                                                                        BEFORE     AFTER
+                                        BANDWIDTH (B)                      420       420
+                                        PROFILE (P)                       7459      7459
+                                        MAXIMUM WAVEFRONT (C-MAX)           31        31
+                                        AVERAGE WAVEFRONT (C-AVG)       16.145    16.145
+                                        RMS WAVEFRONT (C-RMS)           17.470    17.470
+                                        RMS BANDWITCH (B-RMS)           53.236    53.236
+                                        NUMBER OF GRID POINTS (N)                    462
+                                        NUMBER OF ELEMENTS (NON-RIGID)              1317
+                                        NUMBER OF RIGID ELEMENTS PROCESSED*            0
+                                        NUMBER OF MPC  EQUATIONS PROCESSED*            0
+                                        NUMBER OF COMPONENTS                           1
+                                        MAXIMUM NODAL DEGREE                           6
+                                        MINIMUM NODAL DEGREE                           1
+                                        NUMBER OF UNIQUE EDGES                       650
+                                        MATRIX DENSITY, PERCENT                    0.826
+                                        NUMBER OF POINTS OF ZERO DEGREE                0
+                                        BANDIT OPEN CORE                        13998969
+                                        CRITERION*                         RMS WAVEFRONT
+                                        METHOD USED*                                 GPS
+
+                               (* THESE DEFAULT OPTIONS CAN BE OVERRIDDEN BY THE NASTRAN CARD)
+
+
+                               BANDIT FINDS GRID POINT RE-SEQUENCING NOT NECESSARY
+0         **NO ERRORS FOUND - EXECUTE NASTRAN PROGRAM**
+0*** USER WARNING MESSAGE 2222, METHOD OF NORMALIZATION ON EIGR CARD NOT SPECIFIED. DEFAULT OF 'MASS' WILL BE USED
+0*** USER INFORMATION MESSAGE 238, TURN DIAG 38 ON FOR ADDITIONAL ELEMENT PROCESSING INFORMATION
+
+0*** USER INFORMATION MESSAGE 3113,
+     EMG MODULE PROCESSING DOUBLE PRECISION BAR      ELEMENTS (ELEMENT TYPE  34) STARTING WITH ID     3010
+0*** USER INFORMATION MESSAGE 3113,
+     EMG MODULE PROCESSING DOUBLE PRECISION ELAS2    ELEMENTS (ELEMENT TYPE  12) STARTING WITH ID     1001
+0*** USER INFORMATION MESSAGE 3113,
+     EMG MODULE PROCESSING DOUBLE PRECISION CONM2    ELEMENTS (ELEMENT TYPE  30) STARTING WITH ID     1011
+1     SB14 FLUTTER ANALYSIS                                                 /    95 INTEL LINUX NASTRAN    / OCT  4, 22 / PAGE    16
+      BLOCKED CONTROLS                                                                                                              
+0                                                                                                                                   
+ 
+ 
+                           O U T P U T   F R O M   G R I D   P O I N T   W E I G H T   G E N E R A T O R
+0                                                     REFERENCE POINT =     6240
+ 
+ 
+                                     MO - RIGID BODY MASS MATRIX IN BASIC COORDINATE SYSTEM
+                ***                                                                                             ***
+                *  3.59292139D+02  0.00000000D+00  0.00000000D+00  0.00000000D+00  3.64465241D+01  8.17124146D-14 *
+                *  0.00000000D+00  3.59292139D+02  0.00000000D+00 -3.64465241D+01  0.00000000D+00 -6.07936800D+00 *
+                *  0.00000000D+00  0.00000000D+00  3.59292139D+02 -8.17124146D-14  6.07936800D+00  0.00000000D+00 *
+                *  0.00000000D+00 -3.64465241D+01 -8.17124146D-14  2.18733133D+03  2.88657986D-15 -1.04423398D+02 *
+                *  3.64465241D+01  0.00000000D+00  6.07936800D+00  3.33066907D-15  7.67473192D+02 -1.07691633D-14 *
+                *  8.17124146D-14 -6.07936800D+00  0.00000000D+00 -1.04423398D+02 -1.04360964D-14  2.84960525D+03 *
+                ***                                                                                             ***
+                                        S - TRANSFORMATION MATRIX FOR SCALAR MASS PARTITION
+                                        ***                                             ***
+                                        *  1.00000000D+00  0.00000000D+00  0.00000000D+00 *
+                                        *  0.00000000D+00  1.00000000D+00  0.00000000D+00 *
+                                        *  0.00000000D+00  0.00000000D+00  1.00000000D+00 *
+                                        ***                                             ***
+                         DIRECTION
+                    MASS AXIS SYSTEM (S)       MASS                 X-C.G.           Y-C.G.           Z-C.G.
+                            X            3.592921389D+02      0.000000000D+00 -2.274261131D-16  1.014398039D-01
+                            Y            3.592921389D+02     -1.692040359D-02  0.000000000D+00  1.014398039D-01
+                            Z            3.592921389D+02     -1.692040359D-02 -2.274261131D-16  0.000000000D+00
+
+                                                 I(S) - INERTIAS RELATIVE TO C.G. 
+                                      ***                                                 ***
+                                      *  2.183634197D+03 -4.269186897D-15  1.050400879D+02  *
+                                      * -4.269186897D-15  7.636731984D+02  1.905805465D-14  *
+                                      *  1.050400879D+02  1.905805465D-14  2.849502387D+03  *
+                                      ***                                                 ***
+                                                      I(Q) - PRINCIPAL INERTIAS
+                                      ***                                                 ***
+                                      *  2.167457233D+03                                    *
+                                      *                   7.636731984D+02                   *
+                                      *                                    2.865679351D+03  *
+                                      ***                                                 ***
+                                            Q - TRANSFORMATION MATRIX - I(Q) = QT*I(S)*Q
+                                      ***                                                 ***
+                                      *  9.883477153D-01  0.000000000D+00  1.522129880D-01  *
+                                      *  0.000000000D+00  1.000000000D+00  0.000000000D+00  *
+                                      * -1.522129880D-01  0.000000000D+00  9.883477153D-01  *
+                                      ***                                                 ***
+1     SB14 FLUTTER ANALYSIS                                                 /    95 INTEL LINUX NASTRAN    / OCT  4, 22 / PAGE    17
+      BLOCKED CONTROLS                                                                                                              
+
+                                                                                                                                    
+
+
+
+
+0*** USER INFORMATION MESSAGE 3028      B =   11     BBAR =    3
+                                        C =  152     CBAR =  172
+                                        R =   13
+0*** USER INFORMATION MESSAGE 3027, UNSYMMETRIC  REAL    DECOMPOSITION OF DATA BLOCK LAMA     (N =  2766)
+     TIME ESTIMATE =        0 SECONDS
+1     SB14 FLUTTER ANALYSIS                                                 /    95 INTEL LINUX NASTRAN    / OCT  4, 22 / PAGE    18
+      BLOCKED CONTROLS                                                                                                              
+0                                                                                                                                   
+ 
+ 
+                              E I G E N V A L U E   A N A L Y S I S   S U M M A R Y     (INVERSE POWER METHOD)
+0
+0                                       NUMBER OF EIGENVALUES EXTRACTED  . . . . . .        29
+0                                       NUMBER OF STARTING POINTS USED . . . . . . .        11
+0                                       NUMBER OF STARTING POINT MOVES . . . . . . .         0
+0                                       NUMBER OF TRIANGULAR DECOMPOSITIONS  . . . .        51
+0                                       TOTAL NUMBER OF VECTOR ITERATIONS  . . . . .       324
+
+0                                       REASON FOR TERMINATION . . . . . . . . . . .         7*
+
+0                                       LARGEST OFF-DIAGONAL MODAL MASS TERM . . . .  0.00E+00
+0                                                                              . . .         0
+                                                  MODE PAIR . . . . . . . . . .
+                                                                               . . .         0
+0                                       NUMBER OF OFF-DIAGONAL MODAL MASS
+                                             TERMS FAILING CRITERION . . . . . . . .         0
+
+0                                       (* 1 OR MORE ROOT OUTSIDE FR.RANGE.
+                                         SEE NASTRAN U.M. VOL II, SECTION 2.3.3)
+1     SB14 FLUTTER ANALYSIS                                                 /    95 INTEL LINUX NASTRAN    / OCT  4, 22 / PAGE    19
+      BLOCKED CONTROLS                                                                                                              
+0                                                                                                                                   
+0                                        FORMATTED LIST OF TABLE DATA BLOCK  EQEXIN      ( RECORD  1   )                            
+        EXTERNAL     EXTERNAL GRID   INTERNAL     EXTERNAL GRID   INTERNAL     EXTERNAL GRID   INTERNAL     EXTERNAL GRID   INTERNAL
+        SORT ID      OR SCALAR ID     NUMBER      OR SCALAR ID     NUMBER      OR SCALAR ID     NUMBER      OR SCALAR ID     NUMBER 
+ 
+              1           1011             1           1021             2           1031             3           1041             4
+              5           1051             5           1061             6           1062             7           1063             8
+              9           1064             9           1066            10           1071            11           1081            12
+             13           1091            13           1092            14           1093            15           1094            16
+             17           1096            17           1101            18           1111            19           1112            20
+             21           1113            21           1114            22           1116            23           1121            24
+             25           1131            25           1141            26           1142            27           1143            28
+             29           1144            29           1146            30           1151            31           1161            32
+             33           1171            33           1172            34           1173            35           1174            36
+             37           1175            37           1176            38           1181            39           1191            40
+             41           1192            41           1193            42           1194            43           1196            44
+             45           1201            45           1211            46           1221            47           1222            48
+             49           1223            49           1224            50           1226            51           1231            52
+             53           1241            53           1242            54           1243            55           1244            56
+             57           1246            57           1251            58           1261            59           1271            60
+             61           1272            61           1273            62           1274            63           1276            64
+             65           1281            65           1291            66           1292            67           1293            68
+             69           1294            69           1296            70           1301            71           1311            72
+             73           1312            73           1313            74           1314            75           1316            76
+             77           1321            77           1331            78           1332            79           1333            80
+             81           1334            81           1336            82           1341            83           1351            84
+             85           1361            85           1362            86           1363            87           1364            88
+             89           1366            89           1371            90           1381            91           1382            92
+             93           1383            93           1384            94           1386            95           1391            96
+             97           1401            97           1402            98           1403            99           1404           100
+            101           1405           101           1406           102           1411           103           1421           104
+            105           1431           105           1432           106           1433           107           1434           108
+            109           1436           109           1441           110           1451           111           1452           112
+            113           1453           113           1454           114           1456           115           1461           116
+            117           1471           117           1472           118           1473           119           1474           120
+            121           1476           121           1481           122           1491           123           1501           124
+            125           1502           125           1503           126           1504           127           1506           128
+            129           1511           129           1521           130           1522           131           1523           132
+            133           1524           133           1526           134           1531           135           1541           136
+            137           2021           137           2031           138           2041           139           2051           140
+            141           2061           141           2062           142           2063           143           2064           144
+            145           2066           145           2071           146           2081           147           2091           148
+            149           2092           149           2093           150           2094           151           2096           152
+            153           2101           153           2111           154           2112           155           2113           156
+            157           2114           157           2116           158           2121           159           2131           160
+            161           2141           161           2142           162           2143           163           2144           164
+            165           2146           165           2151           166           2161           167           2171           168
+            169           2172           169           2173           170           2174           171           2175           172
+            173           2176           173           2181           174           2191           175           2192           176
+            177           2193           177           2194           178           2196           179           2201           180
+            181           2211           181           2221           182           2222           183           2223           184
+            185           2224           185           2226           186           2231           187           2241           188
+            189           2242           189           2243           190           2244           191           2246           192
+            193           2251           193           2261           194           2271           195           2272           196
+            197           2273           197           2274           198           2276           199           2281           200
+            201           2291           201           2292           202           2293           203           2294           204
+            205           2296           205           2301           206           2311           207           2312           208
+            209           2313           209           2314           210           2316           211           2321           212
+            213           2331           213           2332           214           2333           215           2334           216
+            217           2336           217           2341           218           2351           219           2361           220
+1     SB14 FLUTTER ANALYSIS                                                 /    95 INTEL LINUX NASTRAN    / OCT  4, 22 / PAGE    20
+      BLOCKED CONTROLS                                                                                                              
+0                                                                                                                                   
+0                                        FORMATTED LIST OF TABLE DATA BLOCK  EQEXIN      ( RECORD  1   )                            
+        EXTERNAL     EXTERNAL GRID   INTERNAL     EXTERNAL GRID   INTERNAL     EXTERNAL GRID   INTERNAL     EXTERNAL GRID   INTERNAL
+        SORT ID      OR SCALAR ID     NUMBER      OR SCALAR ID     NUMBER      OR SCALAR ID     NUMBER      OR SCALAR ID     NUMBER 
+ 
+            221           2362           221           2363           222           2364           223           2366           224
+            225           2371           225           2381           226           2382           227           2383           228
+            229           2384           229           2386           230           2391           231           2401           232
+            233           2402           233           2403           234           2404           235           2405           236
+            237           2406           237           2411           238           2421           239           2431           240
+            241           2432           241           2433           242           2434           243           2436           244
+            245           2441           245           2451           246           2452           247           2453           248
+            249           2454           249           2456           250           2461           251           2471           252
+            253           2472           253           2473           254           2474           255           2476           256
+            257           2481           257           2491           258           2501           259           2502           260
+            261           2503           261           2504           262           2506           263           2511           264
+            265           2521           265           2522           266           2523           267           2524           268
+            269           2526           269           2531           270           2541           271           3011           272
+            273           3012           273           3013           274           3014           275           3015           276
+            277           3021           277           3022           278           3023           279           3024           280
+            281           3031           281           3041           282           3042           283           3043           284
+            285           3044           285           3045           286           3051           287           3061           288
+            289           3062           289           3063           290           3064           291           3065           292
+            293           4013           293           4014           294           4021           295           4022           296
+            297           4023           297           4024           298           4031           299           4041           300
+            301           4042           301           4043           302           4044           303           4045           304
+            305           4051           305           4061           306           4062           307           4063           308
+            309           4064           309           4065           310           5011           311           5012           312
+            313           5013           313           5014           314           5021           315           5022           316
+            317           5023           317           5024           318           5025           319           5031           320
+            321           5032           321           5033           322           5034           323           5035           324
+            325           5041           325           5051           326           5052           327           5053           328
+            329           5054           329           6010           330           6011           331           6012           332
+            333           6020           333           6030           334           6040           335           6041           336
+            337           6042           337           6050           338           6060           339           6070           340
+            341           6080           341           6081           342           6082           343           6090           344
+            345           6100           345           6110           346           6120           347           6130           348
+            349           6131           349           6132           350           6140           351           6150           352
+            353           6160           353           6170           354           6171           355           6172           356
+            357           6180           357           6190           358           6200           359           6210           360
+            361           6211           361           6212           362           6220           363           6230           364
+            365           6240           365           6241           366           6243           367           6244           368
+            369           6250           369           6251           370           6252           371           6260           372
+            373           6270           373           6280           374           6290           375           6300           376
+            377           6310           377           6311           378           6312           379           6320           380
+            381           6330           381           6340           382           6350           383           6360           384
+            385           6370           385           6380           386           6390           387           6400           388
+            389           6410           389           6420           390           6430           391           6431           392
+            393           6432           393           6440           394           6450           395           6460           396
+            397           6470           397           6480           398           6490           399           6500           400
+            401           6510           401           6520           402           6521           403           6522           404
+            405           6530           405           6540           406           6550           407           6560           408
+            409           6570           409           6580           410           6590           411           6591           412
+            413           6592           413           7010           414           7020           415           7030           416
+            417           7040           417           7050           418           7060           419           7070           420
+            421           7080           421           7090           422           7100           423           7110           424
+            425           7120           425           7130           426           7140           427           7150           428
+            429           8010           429           8020           430           8030           431           8040           432
+            433           8050           433           8060           434           8070           435           8080           436
+            437           8090           437           8100           438           8110           439           8120           440
+1     SB14 FLUTTER ANALYSIS                                                 /    95 INTEL LINUX NASTRAN    / OCT  4, 22 / PAGE    21
+      BLOCKED CONTROLS                                                                                                              
+0                                                                                                                                   
+0                                        FORMATTED LIST OF TABLE DATA BLOCK  EQEXIN      ( RECORD  1   )                            
+        EXTERNAL     EXTERNAL GRID   INTERNAL     EXTERNAL GRID   INTERNAL     EXTERNAL GRID   INTERNAL     EXTERNAL GRID   INTERNAL
+        SORT ID      OR SCALAR ID     NUMBER      OR SCALAR ID     NUMBER      OR SCALAR ID     NUMBER      OR SCALAR ID     NUMBER 
+ 
+            441           8130           441           8140           442           8150           443           8160           444
+            445           8170           445           8180           446           8190           447           9020           448
+            449           9030           449           9040           450           9041           451           9050           452
+            453           9051           453           9060           454           9061           455           9070           456
+            457           9071           457           9080           458           9081           459           9090           460
+            461           9091           461         100000           462
+1     SB14 FLUTTER ANALYSIS                                                 /    95 INTEL LINUX NASTRAN    / OCT  4, 22 / PAGE    22
+      BLOCKED CONTROLS                                                                                                              
+0                                                                                                                                   
+0                                        FORMATTED LIST OF TABLE DATA BLOCK  EQEXIN      ( RECORD  2   )                            
+        EXTERNAL     EXTERNAL GRID   INTERNAL     EXTERNAL GRID   INTERNAL     EXTERNAL GRID   INTERNAL     EXTERNAL GRID   INTERNAL
+        SORT ID      OR SCALAR ID   CODED SIL     OR SCALAR ID   CODED SIL     OR SCALAR ID   CODED SIL     OR SCALAR ID   CODED SIL
+ 
+              1           1011            11           1021            71           1031           131           1041           191
+              5           1051           251           1061           311           1062           371           1063           431
+              9           1064           491           1066           551           1071           611           1081           671
+             13           1091           731           1092           791           1093           851           1094           911
+             17           1096           971           1101          1031           1111          1091           1112          1151
+             21           1113          1211           1114          1271           1116          1331           1121          1391
+             25           1131          1451           1141          1511           1142          1571           1143          1631
+             29           1144          1691           1146          1751           1151          1811           1161          1871
+             33           1171          1931           1172          1991           1173          2051           1174          2111
+             37           1175          2171           1176          2231           1181          2291           1191          2351
+             41           1192          2411           1193          2471           1194          2531           1196          2591
+             45           1201          2651           1211          2711           1221          2771           1222          2831
+             49           1223          2891           1224          2951           1226          3011           1231          3071
+             53           1241          3131           1242          3191           1243          3251           1244          3311
+             57           1246          3371           1251          3431           1261          3491           1271          3551
+             61           1272          3611           1273          3671           1274          3731           1276          3791
+             65           1281          3851           1291          3911           1292          3971           1293          4031
+             69           1294          4091           1296          4151           1301          4211           1311          4271
+             73           1312          4331           1313          4391           1314          4451           1316          4511
+             77           1321          4571           1331          4631           1332          4691           1333          4751
+             81           1334          4811           1336          4871           1341          4931           1351          4991
+             85           1361          5051           1362          5111           1363          5171           1364          5231
+             89           1366          5291           1371          5351           1381          5411           1382          5471
+             93           1383          5531           1384          5591           1386          5651           1391          5711
+             97           1401          5771           1402          5831           1403          5891           1404          5951
+            101           1405          6011           1406          6071           1411          6131           1421          6191
+            105           1431          6251           1432          6311           1433          6371           1434          6431
+            109           1436          6491           1441          6551           1451          6611           1452          6671
+            113           1453          6731           1454          6791           1456          6851           1461          6911
+            117           1471          6971           1472          7031           1473          7091           1474          7151
+            121           1476          7211           1481          7271           1491          7331           1501          7391
+            125           1502          7451           1503          7511           1504          7571           1506          7631
+            129           1511          7691           1521          7751           1522          7811           1523          7871
+            133           1524          7931           1526          7991           1531          8051           1541          8111
+            137           2021          8171           2031          8231           2041          8291           2051          8351
+            141           2061          8411           2062          8471           2063          8531           2064          8591
+            145           2066          8651           2071          8711           2081          8771           2091          8831
+            149           2092          8891           2093          8951           2094          9011           2096          9071
+            153           2101          9131           2111          9191           2112          9251           2113          9311
+            157           2114          9371           2116          9431           2121          9491           2131          9551
+            161           2141          9611           2142          9671           2143          9731           2144          9791
+            165           2146          9851           2151          9911           2161          9971           2171         10031
+            169           2172         10091           2173         10151           2174         10211           2175         10271
+            173           2176         10331           2181         10391           2191         10451           2192         10511
+            177           2193         10571           2194         10631           2196         10691           2201         10751
+            181           2211         10811           2221         10871           2222         10931           2223         10991
+            185           2224         11051           2226         11111           2231         11171           2241         11231
+            189           2242         11291           2243         11351           2244         11411           2246         11471
+            193           2251         11531           2261         11591           2271         11651           2272         11711
+            197           2273         11771           2274         11831           2276         11891           2281         11951
+            201           2291         12011           2292         12071           2293         12131           2294         12191
+            205           2296         12251           2301         12311           2311         12371           2312         12431
+            209           2313         12491           2314         12551           2316         12611           2321         12671
+            213           2331         12731           2332         12791           2333         12851           2334         12911
+            217           2336         12971           2341         13031           2351         13091           2361         13151
+1     SB14 FLUTTER ANALYSIS                                                 /    95 INTEL LINUX NASTRAN    / OCT  4, 22 / PAGE    23
+      BLOCKED CONTROLS                                                                                                              
+0                                                                                                                                   
+0                                        FORMATTED LIST OF TABLE DATA BLOCK  EQEXIN      ( RECORD  2   )                            
+        EXTERNAL     EXTERNAL GRID   INTERNAL     EXTERNAL GRID   INTERNAL     EXTERNAL GRID   INTERNAL     EXTERNAL GRID   INTERNAL
+        SORT ID      OR SCALAR ID   CODED SIL     OR SCALAR ID   CODED SIL     OR SCALAR ID   CODED SIL     OR SCALAR ID   CODED SIL
+ 
+            221           2362         13211           2363         13271           2364         13331           2366         13391
+            225           2371         13451           2381         13511           2382         13571           2383         13631
+            229           2384         13691           2386         13751           2391         13811           2401         13871
+            233           2402         13931           2403         13991           2404         14051           2405         14111
+            237           2406         14171           2411         14231           2421         14291           2431         14351
+            241           2432         14411           2433         14471           2434         14531           2436         14591
+            245           2441         14651           2451         14711           2452         14771           2453         14831
+            249           2454         14891           2456         14951           2461         15011           2471         15071
+            253           2472         15131           2473         15191           2474         15251           2476         15311
+            257           2481         15371           2491         15431           2501         15491           2502         15551
+            261           2503         15611           2504         15671           2506         15731           2511         15791
+            265           2521         15851           2522         15911           2523         15971           2524         16031
+            269           2526         16091           2531         16151           2541         16211           3011         16271
+            273           3012         16331           3013         16391           3014         16451           3015         16511
+            277           3021         16571           3022         16631           3023         16691           3024         16751
+            281           3031         16811           3041         16871           3042         16931           3043         16991
+            285           3044         17051           3045         17111           3051         17171           3061         17231
+            289           3062         17291           3063         17351           3064         17411           3065         17471
+            293           4013         17531           4014         17591           4021         17651           4022         17711
+            297           4023         17771           4024         17831           4031         17891           4041         17951
+            301           4042         18011           4043         18071           4044         18131           4045         18191
+            305           4051         18251           4061         18311           4062         18371           4063         18431
+            309           4064         18491           4065         18551           5011         18611           5012         18671
+            313           5013         18731           5014         18791           5021         18851           5022         18911
+            317           5023         18971           5024         19031           5025         19091           5031         19151
+            321           5032         19211           5033         19271           5034         19331           5035         19391
+            325           5041         19451           5051         19511           5052         19571           5053         19631
+            329           5054         19691           6010         19751           6011         19811           6012         19871
+            333           6020         19931           6030         19991           6040         20051           6041         20111
+            337           6042         20171           6050         20231           6060         20291           6070         20351
+            341           6080         20411           6081         20471           6082         20531           6090         20591
+            345           6100         20651           6110         20711           6120         20771           6130         20831
+            349           6131         20891           6132         20951           6140         21011           6150         21071
+            353           6160         21131           6170         21191           6171         21251           6172         21311
+            357           6180         21371           6190         21431           6200         21491           6210         21551
+            361           6211         21611           6212         21671           6220         21731           6230         21791
+            365           6240         21851           6241         21911           6243         21971           6244         22031
+            369           6250         22091           6251         22151           6252         22211           6260         22271
+            373           6270         22331           6280         22391           6290         22451           6300         22511
+            377           6310         22571           6311         22631           6312         22691           6320         22751
+            381           6330         22811           6340         22871           6350         22931           6360         22991
+            385           6370         23051           6380         23111           6390         23171           6400         23231
+            389           6410         23291           6420         23351           6430         23411           6431         23471
+            393           6432         23531           6440         23591           6450         23651           6460         23711
+            397           6470         23771           6480         23831           6490         23891           6500         23951
+            401           6510         24011           6520         24071           6521         24131           6522         24191
+            405           6530         24251           6540         24311           6550         24371           6560         24431
+            409           6570         24491           6580         24551           6590         24611           6591         24671
+            413           6592         24731           7010         24791           7020         24851           7030         24911
+            417           7040         24971           7050         25031           7060         25091           7070         25151
+            421           7080         25211           7090         25271           7100         25331           7110         25391
+            425           7120         25451           7130         25511           7140         25571           7150         25631
+            429           8010         25691           8020         25751           8030         25811           8040         25871
+            433           8050         25931           8060         25991           8070         26051           8080         26111
+            437           8090         26171           8100         26231           8110         26291           8120         26351
+1     SB14 FLUTTER ANALYSIS                                                 /    95 INTEL LINUX NASTRAN    / OCT  4, 22 / PAGE    24
+      BLOCKED CONTROLS                                                                                                              
+0                                                                                                                                   
+0                                        FORMATTED LIST OF TABLE DATA BLOCK  EQEXIN      ( RECORD  2   )                            
+        EXTERNAL     EXTERNAL GRID   INTERNAL     EXTERNAL GRID   INTERNAL     EXTERNAL GRID   INTERNAL     EXTERNAL GRID   INTERNAL
+        SORT ID      OR SCALAR ID   CODED SIL     OR SCALAR ID   CODED SIL     OR SCALAR ID   CODED SIL     OR SCALAR ID   CODED SIL
+ 
+            441           8130         26411           8140         26471           8150         26531           8160         26591
+            445           8170         26651           8180         26711           8190         26771           9020         26831
+            449           9030         26891           9040         26951           9041         27011           9050         27071
+            453           9051         27131           9060         27191           9061         27251           9070         27311
+            457           9071         27371           9080         27431           9081         27491           9090         27551
+            461           9091         27611         100000         27671
+0*** TRAILER =                462                 0                 0                 0                 0                 0
+1     SB14 FLUTTER ANALYSIS                                                 /    95 INTEL LINUX NASTRAN    / OCT  4, 22 / PAGE    25
+      BLOCKED CONTROLS                                                                                                              
+0                                                                                                                                   
+ 
+                                              R E A L   E I G E N V A L U E S
+
+   MODE    EXTRACTION       EIGENVALUE            RADIAN              CYCLIC           GENERALIZED         GENERALIZED
+    NO.       ORDER                              FREQUENCY           FREQUENCY            MASS              STIFFNESS
+
+        1        11        1.807156E-01        4.251066E-01        6.765781E-02        1.000000E+00        1.807156E-01             
+        2        15        2.124465E-01        4.609192E-01        7.335757E-02        1.000000E+00        2.124465E-01             
+        3         7        2.781940E-01        5.274410E-01        8.394484E-02        1.000000E+00        2.781940E-01             
+        4         9        2.789582E-01        5.281649E-01        8.406006E-02        1.000000E+00        2.789582E-01             
+        5         8        5.580707E-01        7.470413E-01        1.188953E-01        1.000000E+00        5.580707E-01             
+        6        10        6.536276E-01        8.084724E-01        1.286724E-01        1.000000E+00        6.536276E-01             
+        7        13        2.054499E+00        1.433352E+00        2.281251E-01        1.000000E+00        2.054499E+00             
+        8        12        6.924539E+00        2.631452E+00        4.188085E-01        1.000000E+00        6.924539E+00             
+        9        14        8.633947E+00        2.938358E+00        4.676542E-01        1.000000E+00        8.633947E+00             
+       10         4        2.147003E+02        1.465266E+01        2.332043E+00        1.000000E+00        2.147003E+02             
+       11         3        5.517919E+02        2.349025E+01        3.738589E+00        1.000000E+00        5.517919E+02             
+       12         2        9.387667E+02        3.063930E+01        4.876396E+00        1.000000E+00        9.387667E+02             
+       13         1        1.098493E+03        3.314352E+01        5.274956E+00        1.000000E+00        1.098493E+03             
+       14         6        1.990722E+03        4.461750E+01        7.101096E+00        1.000000E+00        1.990722E+03             
+       15         5        2.117848E+03        4.602008E+01        7.324324E+00        1.000000E+00        2.117848E+03             
+       16        16        3.186099E+03        5.644554E+01        8.983586E+00        1.000000E+00        3.186099E+03             
+       17        17        4.718799E+03        6.869351E+01        1.093291E+01        1.000000E+00        4.718799E+03             
+       18        19        6.550653E+03        8.093610E+01        1.288138E+01        1.000000E+00        6.550653E+03             
+       19        18        7.110064E+03        8.432120E+01        1.342013E+01        1.000000E+00        7.110064E+03             
+       20        20        8.535214E+03        9.238622E+01        1.470372E+01        1.000000E+00        8.535214E+03             
+       21        21        1.031676E+04        1.015715E+02        1.616560E+01        1.000000E+00        1.031676E+04             
+       22        22        1.117081E+04        1.056920E+02        1.682141E+01        1.000000E+00        1.117081E+04             
+       23        23        1.320230E+04        1.149012E+02        1.828710E+01        1.000000E+00        1.320230E+04             
+       24        24        1.530328E+04        1.237064E+02        1.968849E+01        1.000000E+00        1.530328E+04             
+       25        25        1.647806E+04        1.283669E+02        2.043023E+01        1.000000E+00        1.647806E+04             
+       26        26        2.670479E+04        1.634160E+02        2.600847E+01        1.000000E+00        2.670479E+04             
+       27        27        2.867312E+04        1.693314E+02        2.694992E+01        1.000000E+00        2.867312E+04             
+       28        28        2.952491E+04        1.718282E+02        2.734730E+01        1.000000E+00        2.952491E+04             
+       29        29        3.791497E+04        1.947177E+02        3.099028E+01        1.000000E+00        3.791497E+04             
+1     SB14 FLUTTER ANALYSIS                                                 /    95 INTEL LINUX NASTRAN    / OCT  4, 22 / PAGE    26
+      BLOCKED CONTROLS                                                                                                              
+
+                                                                                                                                    
+
+
+
+
+0*** SYSTEM WARNING MESSAGE 3022
++                                 (SEE PROG. MANUAL SEC. 4.9.7, OR USERS' MANUAL P. 6.5-3)
+     DATA BLOCK PHIG     MAY BE REQUIRED AS INPUT AND IS NOT OUTPUT BY A PREVIOUS MODULE IN THE CURRENT DMAP ROUTE.
+0*** USER INFORMATION MESSAGE 3028      B =  568     BBAR =    7
+                                        C =    0     CBAR =  560
+                                        R =  567
+0*** USER INFORMATION MESSAGE 3027, UNSYMMETRIC COMPLEX  DECOMPOSITION OF DATA BLOCK SCRATC12 (N =   568)
+     TIME ESTIMATE =        0 SECONDS
+0*** USER INFORMATION MESSAGE 3028      B =  568     BBAR =    7
+                                        C =    0     CBAR =  560
+                                        R =  567
+0*** USER INFORMATION MESSAGE 3027, UNSYMMETRIC COMPLEX  DECOMPOSITION OF DATA BLOCK SCRATC12 (N =   568)
+     TIME ESTIMATE =        0 SECONDS
+0*** USER INFORMATION MESSAGE 3028      B =  568     BBAR =    7
+                                        C =    0     CBAR =  560
+                                        R =  567
+0*** USER INFORMATION MESSAGE 3027, UNSYMMETRIC COMPLEX  DECOMPOSITION OF DATA BLOCK SCRATC12 (N =   568)
+     TIME ESTIMATE =        0 SECONDS
+0*** USER INFORMATION MESSAGE 3028      B =  568     BBAR =    7
+                                        C =    0     CBAR =  560
+                                        R =  567
+0*** USER INFORMATION MESSAGE 3027, UNSYMMETRIC COMPLEX  DECOMPOSITION OF DATA BLOCK SCRATC12 (N =   568)
+     TIME ESTIMATE =        0 SECONDS
+0*** USER INFORMATION MESSAGE 3028      B =  568     BBAR =    7
+                                        C =    0     CBAR =  560
+                                        R =  567
+0*** USER INFORMATION MESSAGE 3027, UNSYMMETRIC COMPLEX  DECOMPOSITION OF DATA BLOCK SCRATC12 (N =   568)
+     TIME ESTIMATE =        0 SECONDS
+0*** USER INFORMATION MESSAGE 3028      B =  568     BBAR =    7
+                                        C =    0     CBAR =  560
+                                        R =  567
+0*** USER INFORMATION MESSAGE 3027, UNSYMMETRIC COMPLEX  DECOMPOSITION OF DATA BLOCK SCRATC12 (N =   568)
+     TIME ESTIMATE =        0 SECONDS
+1     SB14 FLUTTER ANALYSIS                                                 /    95 INTEL LINUX NASTRAN    / OCT  4, 22 / PAGE    27
+      BLOCKED CONTROLS                                                                                                              
+
+                                                                                                                                    
+
+
+
+
+0*** USER INFORMATION MESSAGE 3028      B =  568     BBAR =    7
+                                        C =    0     CBAR =  560
+                                        R =  567
+0*** USER INFORMATION MESSAGE 3027, UNSYMMETRIC COMPLEX  DECOMPOSITION OF DATA BLOCK SCRATC12 (N =   568)
+     TIME ESTIMATE =        0 SECONDS
+0*** USER INFORMATION MESSAGE 3028      B =  568     BBAR =    7
+                                        C =    0     CBAR =  560
+                                        R =  567
+0*** USER INFORMATION MESSAGE 3027, UNSYMMETRIC COMPLEX  DECOMPOSITION OF DATA BLOCK SCRATC12 (N =   568)
+     TIME ESTIMATE =        0 SECONDS
+0*** USER INFORMATION MESSAGE 3028      B =  568     BBAR =    7
+                                        C =    0     CBAR =  560
+                                        R =  567
+0*** USER INFORMATION MESSAGE 3027, UNSYMMETRIC COMPLEX  DECOMPOSITION OF DATA BLOCK SCRATC12 (N =   568)
+     TIME ESTIMATE =        0 SECONDS
+0*** USER INFORMATION MESSAGE 3028      B =  568     BBAR =    7
+                                        C =    0     CBAR =  560
+                                        R =  567
+0*** USER INFORMATION MESSAGE 3027, UNSYMMETRIC COMPLEX  DECOMPOSITION OF DATA BLOCK SCRATC12 (N =   568)
+     TIME ESTIMATE =        0 SECONDS
+0*** USER INFORMATION MESSAGE 3028      B =  568     BBAR =    7
+                                        C =    0     CBAR =  560
+                                        R =  567
+0*** USER INFORMATION MESSAGE 3027, UNSYMMETRIC COMPLEX  DECOMPOSITION OF DATA BLOCK SCRATC12 (N =   568)
+     TIME ESTIMATE =        0 SECONDS
+1     SB14 FLUTTER ANALYSIS                                                 /    95 INTEL LINUX NASTRAN    / OCT  4, 22 / PAGE    28
+      BLOCKED CONTROLS                                                                                                              
+0                                                                                                                                   
+0                                               EIGENVECTOR FROM THE PK METHOD
+   EIGENVALUE =    -8.82131E+00    0.00000E+00
+
+   EIGENVECTOR
+                    1.00000E+00    0.00000E+00
+                   -2.75337E-01    0.00000E+00
+                   -3.41481E-05    0.00000E+00
+                   -6.99337E-05    0.00000E+00
+                    3.65893E-02    0.00000E+00
+                    1.14643E-05    0.00000E+00
+                   -1.01226E-07    0.00000E+00
+                    3.37012E-04    0.00000E+00
+                    1.50706E-02    0.00000E+00
+                   -1.62134E-05    0.00000E+00
+                    8.02034E-03    0.00000E+00
+                   -1.22443E-07    0.00000E+00
+                    6.74110E-03    0.00000E+00
+                   -1.76544E-03    0.00000E+00
+                   -8.67439E-07    0.00000E+00
+                    4.56085E-07    0.00000E+00
+                   -1.35045E-04    0.00000E+00
+                    9.92267E-04    0.00000E+00
+                    2.56195E-03    0.00000E+00
+                    5.28406E-04    0.00000E+00
+                   -2.21548E-07    0.00000E+00
+                   -2.51070E-07    0.00000E+00
+                    8.45715E-09    0.00000E+00
+                    4.58436E-08    0.00000E+00
+                    8.94817E-05    0.00000E+00
+                   -1.29414E-03    0.00000E+00
+                   -2.26683E-07    0.00000E+00
+                    3.06902E-03    0.00000E+00
+                    4.31393E-09    0.00000E+00
+1     SB14 FLUTTER ANALYSIS                                                 /    95 INTEL LINUX NASTRAN    / OCT  4, 22 / PAGE    29
+      BLOCKED CONTROLS                                                                                                              
+0                                                                                                                                   
+0                                               EIGENVECTOR FROM THE PK METHOD
+   EIGENVALUE =    -1.58150E-02    0.00000E+00
+
+   EIGENVECTOR
+                    1.00000E+00    0.00000E+00
+                   -2.42902E-01    0.00000E+00
+                    1.29474E-04    0.00000E+00
+                   -8.49986E-05    0.00000E+00
+                    1.42668E-02    0.00000E+00
+                   -1.40824E-06    0.00000E+00
+                   -6.41253E-07    0.00000E+00
+                   -6.72549E-06    0.00000E+00
+                    1.00414E-03    0.00000E+00
+                   -5.65683E-09    0.00000E+00
+                    2.81376E-05    0.00000E+00
+                   -2.05050E-09    0.00000E+00
+                    9.47285E-06    0.00000E+00
+                   -7.88516E-07    0.00000E+00
+                   -1.36448E-08    0.00000E+00
+                    5.32243E-10    0.00000E+00
+                    1.89684E-07    0.00000E+00
+                    2.14727E-06    0.00000E+00
+                    5.78302E-06    0.00000E+00
+                    1.74178E-06    0.00000E+00
+                    4.65505E-09    0.00000E+00
+                   -5.07000E-09    0.00000E+00
+                   -6.86567E-10    0.00000E+00
+                   -2.90204E-09    0.00000E+00
+                   -2.66325E-08    0.00000E+00
+                   -2.60228E-06    0.00000E+00
+                   -2.92819E-09    0.00000E+00
+                    5.72735E-06    0.00000E+00
+                   -5.38582E-10    0.00000E+00
+1     SB14 FLUTTER ANALYSIS                                                 /    95 INTEL LINUX NASTRAN    / OCT  4, 22 / PAGE    30
+      BLOCKED CONTROLS                                                                                                              
+0                                                                                                                                   
+0                                               EIGENVECTOR FROM THE PK METHOD
+   EIGENVALUE =    -7.63474E-02    2.32479E-01
+
+   EIGENVECTOR
+                    5.65132E-05   -1.69786E-06
+                   -2.80271E-06    2.07110E-07
+                    1.00000E+00    0.00000E+00
+                   -2.46208E-01    1.49934E-03
+                   -5.23260E-06    2.02094E-07
+                   -9.17748E-03    1.08452E-02
+                   -2.03053E-03    1.05882E-04
+                   -9.71286E-07   -5.72238E-09
+                    1.68081E-07   -5.50790E-09
+                   -1.15182E-03    8.79331E-05
+                    5.94844E-09   -9.19621E-10
+                   -3.69081E-06   -6.74715E-07
+                   -1.90440E-08    1.25641E-09
+                    3.03208E-09    1.72509E-09
+                   -6.47477E-05    7.60848E-06
+                    2.75253E-05   -4.75319E-06
+                   -8.72451E-10    7.01263E-10
+                   -8.06301E-10   -8.80571E-10
+                   -3.98789E-09   -3.24513E-10
+                   -2.91488E-09    1.23126E-09
+                   -1.78153E-06    6.38923E-07
+                   -3.65525E-06    2.19992E-06
+                   -1.02865E-06    2.90826E-07
+                   -1.66800E-06    8.47757E-07
+                    6.54232E-10   -1.50696E-11
+                    4.68635E-10    2.80386E-11
+                   -1.24677E-05    3.19940E-06
+                   -3.89276E-10    9.71422E-12
+                    1.01460E-07    1.20505E-07
+1     SB14 FLUTTER ANALYSIS                                                 /    95 INTEL LINUX NASTRAN    / OCT  4, 22 / PAGE    31
+      BLOCKED CONTROLS                                                                                                              
+0                                                                                                                                   
+0                                               EIGENVECTOR FROM THE PK METHOD
+   EIGENVALUE =    -4.64072E-04    5.29030E-01
+
+   EIGENVECTOR
+                   -4.40818E-05    5.92036E-06
+                   -2.32249E-04    3.31086E-06
+                   -6.13346E-01   -1.36773E-01
+                    1.00000E+00    0.00000E+00
+                   -3.54035E-05    7.23121E-07
+                   -3.31676E-02   -1.81130E-02
+                   -1.70285E-03    1.82947E-04
+                    4.93206E-06   -1.21192E-08
+                   -1.36848E-06    4.59150E-08
+                   -2.13329E-05    1.80455E-04
+                   -5.35120E-08   -3.45139E-10
+                    1.19192E-06    1.59004E-06
+                    3.52292E-08   -8.80602E-09
+                   -8.93849E-09   -1.09228E-09
+                    1.81931E-06    2.67052E-06
+                   -2.08205E-07    8.52890E-07
+                   -5.95996E-10   -6.71537E-10
+                    4.15257E-09    7.47024E-10
+                    5.75058E-09   -2.04695E-10
+                   -1.68503E-09   -1.46490E-09
+                   -1.67329E-06   -4.43544E-08
+                   -9.20584E-07   -2.74990E-06
+                    9.96349E-08   -2.88790E-07
+                    4.59428E-07   -1.23908E-06
+                   -1.53751E-10    1.04031E-10
+                   -1.11147E-09   -4.24992E-11
+                    1.15509E-06   -2.62889E-06
+                    2.37659E-09   -2.51264E-11
+                    1.05357E-07   -2.73024E-07
+1     SB14 FLUTTER ANALYSIS                                                 /    95 INTEL LINUX NASTRAN    / OCT  4, 22 / PAGE    32
+      BLOCKED CONTROLS                                                                                                              
+0                                                                                                                                   
+0                                               EIGENVECTOR FROM THE PK METHOD
+   EIGENVALUE =     1.73870E-02    7.38928E-01
+
+   EIGENVECTOR
+                   -4.74569E-02    3.34620E-02
+                    4.88775E-02    8.40741E-02
+                    5.73593E-05    1.73212E-05
+                    3.02670E-06    2.67933E-05
+                    1.00000E+00    0.00000E+00
+                    4.70439E-06    2.19678E-06
+                   -1.24565E-07   -1.24794E-07
+                    4.02044E-04   -7.14020E-05
+                   -1.89425E-04   -7.00017E-05
+                    2.51071E-07   -1.42529E-08
+                    7.44593E-05    1.80524E-04
+                   -6.69726E-10   -1.19750E-09
+                    8.03375E-05    2.60408E-04
+                   -5.15666E-06   -1.74901E-05
+                    8.12267E-10   -3.55819E-10
+                   -2.97219E-09   -2.21935E-09
+                    3.87436E-07    9.01467E-07
+                    4.60144E-06    1.12165E-05
+                    9.21580E-06    2.85041E-05
+                    4.51364E-06    1.50535E-05
+                    4.46172E-09    5.22347E-09
+                    2.08662E-09    7.57834E-09
+                   -4.12910E-10   -3.73979E-10
+                   -1.67624E-09   -1.00594E-09
+                   -1.67485E-06   -6.01049E-06
+                   -4.40849E-07    2.93742E-07
+                   -9.59014E-10    2.49579E-10
+                    4.22809E-07   -3.21707E-06
+                   -1.49583E-10   -5.31935E-11
+1     SB14 FLUTTER ANALYSIS                                                 /    95 INTEL LINUX NASTRAN    / OCT  4, 22 / PAGE    33
+      BLOCKED CONTROLS                                                                                                              
+0                                                                                                                                   
+0                                               EIGENVECTOR FROM THE PK METHOD
+   EIGENVALUE =    -2.55456E-01    1.42121E+00
+
+   EIGENVECTOR
+                    3.52564E-01    1.38631E-01
+                    1.00000E+00    0.00000E+00
+                    9.07101E-04   -2.62184E-04
+                    8.03435E-05    6.31215E-05
+                   -9.69868E-01    7.17544E-02
+                   -8.29336E-06    6.18660E-05
+                   -2.97315E-06    9.93754E-07
+                   -2.18415E-03   -7.19408E-04
+                   -3.52751E-04    2.12620E-04
+                    8.16838E-06    5.03644E-07
+                    7.81110E-03    3.07340E-03
+                   -4.42889E-08   -1.34460E-08
+                    3.27765E-03   -7.83429E-05
+                    9.18469E-05    1.50572E-04
+                    3.59966E-07    4.10522E-08
+                   -3.12821E-07   -7.05042E-08
+                    9.75440E-05    5.30044E-05
+                    2.76418E-04    6.64217E-05
+                    3.15023E-04   -4.32230E-05
+                    3.09575E-04    7.67097E-05
+                    3.64032E-07    1.40367E-07
+                    5.14532E-07    2.10467E-07
+                   -1.99217E-08   -9.64507E-09
+                   -6.27382E-08   -2.66193E-08
+                   -8.58712E-05   -6.25638E-06
+                    8.39413E-07    4.48090E-06
+                    8.48344E-08    1.75907E-08
+                   -1.92564E-05    8.62338E-08
+                   -3.94270E-09   -6.19814E-10
+1     SB14 FLUTTER ANALYSIS                                                 /    95 INTEL LINUX NASTRAN    / OCT  4, 22 / PAGE    34
+      BLOCKED CONTROLS                                                                                                              
+0                                                                                                                                   
+0                                               EIGENVECTOR FROM THE PK METHOD
+   EIGENVALUE =    -3.75565E+00    3.55781E+00
+
+   EIGENVECTOR
+                    5.92580E-05   -2.55543E-06
+                    2.22616E-06    3.08665E-06
+                    1.00000E+00    0.00000E+00
+                   -2.52397E-01   -5.64697E-03
+                   -1.30424E-05    1.12335E-06
+                   -1.29538E-01   -1.03587E-01
+                   -2.85524E-03    2.83659E-04
+                   -8.72982E-07    1.02302E-07
+                    1.93970E-07   -1.38363E-08
+                   -3.35148E-03    1.46688E-01
+                   -2.15493E-08    2.15094E-07
+                    2.31689E-04   -7.31435E-05
+                   -6.20110E-08    3.52262E-08
+                   -6.39503E-07    1.13575E-06
+                   -4.97470E-04    6.23295E-03
+                    2.53649E-04   -3.35820E-03
+                   -2.02565E-07    3.41628E-07
+                    2.46304E-07   -4.06967E-07
+                    1.26288E-07   -2.03572E-07
+                   -3.20097E-07    5.33677E-07
+                   -1.95546E-04    6.19486E-04
+                   -4.76830E-04    5.78367E-04
+                   -6.09248E-06    9.68982E-05
+                   -2.11232E-05    1.23829E-04
+                   -3.30278E-09    2.25025E-09
+                   -9.21390E-09    6.60025E-09
+                    1.70973E-05    1.39546E-03
+                   -4.18681E-09    1.71852E-08
+                    6.86015E-06   -1.63740E-05
+1     SB14 FLUTTER ANALYSIS                                                 /    95 INTEL LINUX NASTRAN    / OCT  4, 22 / PAGE    35
+      BLOCKED CONTROLS                                                                                                              
+0                                                                                                                                   
+0                                               EIGENVECTOR FROM THE PK METHOD
+   EIGENVALUE =    -5.52823E+00    1.34218E+01
+
+   EIGENVECTOR
+                   -2.93262E-06   -1.31083E-05
+                    2.42843E-06    7.04562E-07
+                   -3.45319E-02   -2.47386E-01
+                    4.32951E-03    5.84350E-02
+                    9.96817E-07    4.16370E-06
+                   -7.83090E-02   -4.32923E-02
+                    9.72790E-03    5.11726E-03
+                    1.26911E-08    3.15594E-07
+                    1.23534E-07   -1.59534E-08
+                    1.00000E+00    0.00000E+00
+                    1.25468E-06    9.91755E-07
+                   -1.63780E-03   -4.63205E-05
+                    1.58130E-07    4.71847E-07
+                    2.02834E-06    3.88686E-06
+                    1.26907E-03    1.55789E-03
+                   -4.23625E-03    4.21919E-03
+                    5.03826E-07    1.10681E-06
+                   -5.63748E-07   -1.34483E-06
+                   -2.58074E-07   -7.43971E-07
+                    7.60671E-07    1.65943E-06
+                    1.77350E-03   -1.52002E-03
+                    4.53683E-05    4.17180E-03
+                    4.14279E-05   -4.72385E-05
+                   -1.29685E-04    4.17723E-04
+                    1.10115E-09    2.73006E-08
+                   -7.19541E-09    8.77352E-08
+                    1.73960E-03   -3.39948E-03
+                    5.89928E-08   -5.64248E-08
+                   -5.87852E-05    5.13384E-05
+1     SB14 FLUTTER ANALYSIS                                                 /    95 INTEL LINUX NASTRAN    / OCT  4, 22 / PAGE    36
+      BLOCKED CONTROLS                                                                                                              
+0                                                                                                                                   
+0                                               EIGENVECTOR FROM THE PK METHOD
+   EIGENVALUE =    -9.01552E-01    1.62407E+01
+
+   EIGENVECTOR
+                   -2.14994E-05    1.23754E-05
+                   -2.62905E-05   -2.65872E-06
+                   -5.40894E-01   -7.54498E-02
+                    1.85487E-01    1.85493E-02
+                   -7.96693E-07    3.95374E-07
+                    1.00000E+00    0.00000E+00
+                   -1.98705E-01    4.19107E-03
+                   -2.49200E-06   -1.26321E-06
+                    2.46911E-06    1.77211E-06
+                   -8.78499E-02    3.58996E-01
+                   -1.26915E-05    1.95446E-05
+                    4.68636E-02    5.70625E-03
+                   -4.13260E-06    5.49634E-07
+                   -6.81796E-05    2.50694E-06
+                    1.78175E-02   -6.54274E-03
+                    3.58319E-02    5.49266E-03
+                   -1.90694E-05   -1.15447E-06
+                    2.31010E-05    1.85383E-06
+                    1.20135E-05    8.67395E-07
+                   -2.92170E-05   -2.64973E-06
+                   -2.60405E-02   -2.49918E-03
+                   -3.21833E-02   -3.93043E-03
+                    4.52430E-04   -2.83721E-05
+                    7.79713E-04    2.70872E-05
+                   -3.16461E-07   -1.87219E-08
+                   -9.09443E-07   -6.66281E-08
+                   -2.63790E-03   -7.05810E-04
+                   -2.09600E-07   -5.98426E-08
+                    1.43880E-04    1.09204E-04
+1     SB14 FLUTTER ANALYSIS                                                 /    95 INTEL LINUX NASTRAN    / OCT  4, 22 / PAGE    37
+      BLOCKED CONTROLS                                                                                                              
+0                                                                                                                                   
+0                                               EIGENVECTOR FROM THE PK METHOD
+   EIGENVALUE =    -3.08781E+00    2.22058E+01
+
+   EIGENVECTOR
+                    1.00000E+00    0.00000E+00
+                   -2.62348E-01    8.53678E-03
+                   -6.94905E-05    6.33859E-07
+                   -5.82215E-05    2.34562E-06
+                    2.92832E-02   -6.21478E-03
+                   -4.79081E-06    1.16284E-06
+                   -9.01972E-07    9.28528E-07
+                    1.42694E-02    5.37205E-03
+                    1.73448E-01   -2.90051E-02
+                   -1.04200E-06   -1.60686E-06
+                   -9.65727E-02   -1.39111E-01
+                   -4.76956E-07   -5.21654E-07
+                   -7.03083E-03   -3.77486E-02
+                   -1.20940E-02    1.04208E-02
+                   -3.83933E-07   -1.70210E-07
+                   -7.63015E-07   -5.97430E-07
+                   -1.31176E-03    1.27927E-03
+                   -5.49378E-03   -2.17254E-03
+                   -1.81834E-02   -4.98483E-03
+                   -5.34575E-03    4.10054E-04
+                    1.51614E-06    1.03535E-06
+                    1.78532E-06    1.39528E-06
+                   -8.13615E-08   -8.68156E-08
+                   -2.37948E-07   -2.37746E-07
+                    3.54083E-03    1.20208E-04
+                    2.74266E-03    1.83667E-03
+                    1.21178E-07    6.72375E-08
+                    1.80069E-03   -3.66261E-03
+                   -4.37812E-08   -1.03235E-08
+1     SB14 FLUTTER ANALYSIS                                                 /    95 INTEL LINUX NASTRAN    / OCT  4, 22 / PAGE    38
+      BLOCKED CONTROLS                                                                                                              
+0                                                                                                                                   
+0                                               EIGENVECTOR FROM THE PK METHOD
+   EIGENVALUE =    -6.02098E+00    2.31707E+01
+
+   EIGENVECTOR
+                   -3.26350E-01    6.31289E-01
+                    9.66113E-03   -3.82931E-01
+                    5.45728E-06   -4.84151E-05
+                    2.37245E-06   -9.92875E-05
+                    4.23986E-02    1.63820E-01
+                    2.57902E-05   -2.87224E-05
+                   -8.72274E-07   -6.89461E-06
+                   -2.81501E-02   -2.82393E-01
+                   -3.17417E-02    1.27086E-01
+                    3.65375E-06    3.24570E-06
+                    1.00000E+00    0.00000E+00
+                    1.12603E-06    6.35754E-06
+                    2.66750E-02    3.87727E-02
+                   -1.65308E-02   -4.29778E-02
+                    1.90613E-06    4.31459E-06
+                    2.19601E-06    5.32879E-06
+                   -2.83126E-03   -2.43328E-03
+                    3.54723E-03    1.73599E-03
+                    1.29853E-02   -2.86761E-03
+                    5.31639E-03   -1.74140E-02
+                   -3.25224E-06   -1.31073E-05
+                   -3.59144E-06   -1.85294E-05
+                    7.72140E-08    1.06803E-06
+                    2.25453E-07    2.84962E-06
+                   -2.35210E-03    3.25328E-03
+                   -2.51815E-03    5.01164E-04
+                   -2.26405E-07    6.36669E-08
+                    1.78584E-03    1.40778E-03
+                    4.31972E-08    8.21492E-08
+1     SB14 FLUTTER ANALYSIS                                                 /    95 INTEL LINUX NASTRAN    / OCT  4, 22 / PAGE    39
+      BLOCKED CONTROLS                                                                                                              
+0                                                                                                                                   
+0                                               EIGENVECTOR FROM THE PK METHOD
+   EIGENVALUE =     3.49314E-01    2.31902E+01
+
+   EIGENVECTOR
+                   -2.55208E-01   -7.01219E-01
+                    7.90964E-02    2.08197E-01
+                    8.07866E-06    5.66545E-05
+                    2.17355E-05    4.46087E-05
+                   -1.55426E-02   -3.51159E-02
+                    2.06663E-05   -1.36819E-05
+                    7.04502E-06   -4.66004E-06
+                    1.41263E-02    7.46027E-02
+                   -6.75739E-02   -1.32501E-01
+                    1.69455E-06    4.46431E-06
+                    1.00000E+00    0.00000E+00
+                    2.45131E-06   -1.55859E-06
+                   -3.61225E-02   -3.80968E-02
+                   -6.16590E-03   -5.01300E-02
+                    5.34094E-07   -6.06334E-07
+                    8.68966E-07    8.24703E-07
+                   -9.80805E-04   -6.08060E-03
+                    2.10828E-03    6.05434E-03
+                    7.74064E-03    1.52042E-02
+                    2.31909E-03    1.03932E-03
+                   -1.07579E-06   -1.62722E-06
+                   -8.82444E-07   -2.71976E-06
+                   -4.65924E-08    2.60353E-07
+                   -1.29870E-07    7.26904E-07
+                   -1.84602E-03   -2.59162E-03
+                    1.05734E-04   -1.82552E-03
+                   -8.68721E-08   -6.54636E-08
+                   -3.75837E-03   -1.14640E-03
+                    3.65705E-08    3.18082E-08
+1     SB14 FLUTTER ANALYSIS                                                 /    95 INTEL LINUX NASTRAN    / OCT  4, 22 / PAGE    40
+      BLOCKED CONTROLS                                                                                                              
+0                                                                                                                                   
+0                                               EIGENVECTOR FROM THE PK METHOD
+   EIGENVALUE =    -2.24793E-02    3.06880E+01
+
+   EIGENVECTOR
+                   -1.49977E-06   -2.58995E-07
+                    9.16924E-08    2.32589E-07
+                   -4.56115E-02   -1.13176E-02
+                    1.02826E-02    2.11674E-03
+                    8.70861E-07    2.54302E-07
+                   -1.73600E-02   -1.24822E-02
+                    3.45265E-03    1.64040E-03
+                   -4.56361E-07   -2.73416E-07
+                    2.11709E-07    1.00233E-07
+                    1.53472E-01    4.82995E-02
+                   -2.17493E-06    1.71705E-06
+                    1.00000E+00    0.00000E+00
+                    2.65587E-06   -2.53004E-07
+                    1.01669E-05    2.26186E-06
+                   -2.51747E-02   -3.03835E-03
+                    6.06262E-03   -8.25171E-04
+                    1.69648E-06    8.13338E-07
+                   -1.81583E-06   -9.85049E-07
+                   -1.02680E-06   -5.53650E-07
+                    2.16489E-06    1.27500E-06
+                   -8.02523E-04    1.06597E-03
+                    4.82614E-03    1.80144E-03
+                    1.80701E-04   -3.85632E-05
+                    1.66547E-03    1.04348E-04
+                    3.91532E-08    2.05069E-08
+                    7.78976E-08    4.82539E-08
+                    5.13510E-04   -4.40211E-04
+                    1.05178E-08    4.34947E-09
+                    2.83682E-04    1.05236E-04
+1     SB14 FLUTTER ANALYSIS                                                 /    95 INTEL LINUX NASTRAN    / OCT  4, 22 / PAGE    41
+      BLOCKED CONTROLS                                                                                                              
+0                                                                                                                                   
+0                                               EIGENVECTOR FROM THE PK METHOD
+   EIGENVALUE =    -3.51657E+00    3.27163E+01
+
+   EIGENVECTOR
+                   -4.07911E-01    1.51530E-02
+                    1.06058E-01    4.65543E-03
+                    2.54580E-05   -1.67547E-06
+                    2.46222E-05    1.88794E-06
+                   -1.16275E-02   -4.47756E-03
+                    9.40831E-06    1.67085E-06
+                    1.83932E-06    1.10270E-08
+                   -1.55466E-02    1.69832E-03
+                   -7.61870E-02   -7.13063E-04
+                   -6.33965E-07    4.24831E-07
+                   -2.42946E-02    4.93376E-02
+                   -3.33257E-06    2.70997E-06
+                    1.00000E+00    0.00000E+00
+                    2.66756E-02    1.02721E-02
+                    2.03721E-06    3.44217E-08
+                    1.17623E-06    2.91957E-07
+                    2.60968E-03    6.31697E-05
+                    5.26166E-03    4.33584E-03
+                    1.82015E-02    4.37124E-03
+                    5.92974E-03   -1.45326E-03
+                   -1.64951E-06    7.94733E-07
+                   -1.55810E-06    1.29669E-06
+                   -3.99557E-09   -7.86085E-08
+                   -1.24417E-08   -2.09511E-07
+                   -3.83524E-03    1.93069E-03
+                   -2.72533E-03    5.68198E-04
+                   -1.55225E-07   -2.92615E-08
+                   -2.36882E-03    3.07902E-03
+                    4.01780E-08    6.38534E-08
+1     SB14 FLUTTER ANALYSIS                                                 /    95 INTEL LINUX NASTRAN    / OCT  4, 22 / PAGE    42
+      BLOCKED CONTROLS                                                                                                              
+0                                                                                                                                   
+0                                               EIGENVECTOR FROM THE PK METHOD
+   EIGENVALUE =    -5.34323E+00    4.39808E+01
+
+   EIGENVECTOR
+                   -9.59487E-03   -7.82549E-03
+                   -4.48740E-03    4.99195E-03
+                   -3.13571E-05   -8.39409E-06
+                    1.21031E-05    3.68066E-06
+                    4.28145E-03   -2.58799E-03
+                    1.04357E-04    3.32719E-06
+                    1.59784E-05   -3.14387E-06
+                   -1.53941E-02   -3.75279E-04
+                   -1.02757E-03   -1.04579E-03
+                   -1.57498E-05    3.00664E-06
+                    3.17505E-02    7.81903E-02
+                   -2.20263E-05    3.44751E-06
+                    4.15646E-03   -5.10216E-03
+                    1.00000E+00    0.00000E+00
+                    6.48306E-05    1.39694E-04
+                    2.17993E-06    1.95188E-05
+                    1.56986E-02   -4.33718E-02
+                   -6.99400E-03    3.20350E-02
+                   -2.96746E-03    1.31540E-02
+                    3.72839E-03   -2.83698E-02
+                   -1.79794E-05   -2.71918E-06
+                   -1.37967E-05   -2.22620E-06
+                   -8.94293E-07   -1.23704E-07
+                   -2.50196E-06   -1.07426E-06
+                    4.14534E-04   -5.32978E-04
+                   -6.85952E-05   -3.09285E-04
+                    2.25027E-07   -8.49962E-07
+                    4.29138E-05   -1.12108E-03
+                    4.91010E-07    2.63042E-08
+1     SB14 FLUTTER ANALYSIS                                                 /    95 INTEL LINUX NASTRAN    / OCT  4, 22 / PAGE    43
+      BLOCKED CONTROLS                                                                                                              
+0                                                                                                                                   
+0                                               EIGENVECTOR FROM THE PK METHOD
+   EIGENVALUE =    -2.95391E+00    4.59127E+01
+
+   EIGENVECTOR
+                   -1.48310E-07   -1.02418E-06
+                    6.96177E-07    1.44124E-06
+                   -7.30486E-03   -4.48047E-02
+                    1.19547E-03    9.66732E-03
+                   -1.76541E-07    3.79093E-08
+                   -1.10491E-02   -2.50230E-02
+                   -1.40577E-03    1.89778E-03
+                   -8.45315E-07    1.48327E-06
+                   -9.15165E-08    2.14276E-07
+                    1.17010E-02    1.04657E-02
+                    4.20279E-06   -5.83760E-07
+                    2.99039E-03    1.30310E-02
+                   -2.94319E-07   -1.48127E-06
+                    4.08058E-05   -8.64320E-05
+                    1.00000E+00    0.00000E+00
+                   -3.22310E-02    1.20529E-01
+                   -2.82071E-06    2.61382E-06
+                    2.17200E-06   -3.70130E-06
+                    4.94270E-07   -2.39325E-06
+                   -1.66362E-06    4.93960E-06
+                    2.03677E-04    5.87816E-03
+                    2.38219E-03    7.14351E-03
+                   -1.31308E-04   -9.88666E-04
+                    6.72898E-05   -3.65054E-03
+                   -1.94840E-08    4.89097E-08
+                    1.92968E-08    2.41462E-07
+                   -3.40199E-03   -6.40131E-03
+                   -1.46179E-07    3.23866E-09
+                    8.49678E-05   -2.50642E-03
+1     SB14 FLUTTER ANALYSIS                                                 /    95 INTEL LINUX NASTRAN    / OCT  4, 22 / PAGE    44
+      BLOCKED CONTROLS                                                                                                              
+0                                                                                                                                   
+0                                               EIGENVECTOR FROM THE PK METHOD
+   EIGENVALUE =    -9.72256E-01    5.60349E+01
+
+   EIGENVECTOR
+                   -5.71706E-08    6.76955E-07
+                    1.29962E-06    7.31529E-07
+                   -2.01343E-02   -3.33153E-03
+                    3.72971E-03   -1.21919E-04
+                   -2.16139E-07   -1.31218E-07
+                   -2.26444E-02   -1.77222E-02
+                    2.45674E-06    2.35932E-03
+                    2.83636E-07    6.90590E-07
+                    1.01376E-07    1.48743E-07
+                    3.36675E-02    9.56654E-03
+                   -2.50558E-06   -2.68821E-06
+                    4.82596E-03    3.81195E-03
+                   -9.32766E-07   -1.02870E-06
+                   -2.08495E-05   -3.31460E-05
+                    1.00474E-01   -5.82041E-02
+                    1.00000E+00    0.00000E+00
+                    8.56811E-06    1.63560E-05
+                   -6.77058E-06   -1.22776E-05
+                   -4.26461E-06   -5.91590E-06
+                    7.98973E-06    1.30728E-05
+                    1.04449E-02    2.03107E-02
+                    1.00929E-02    5.96937E-03
+                   -7.89507E-04   -1.08609E-04
+                   -2.82663E-03    7.92244E-04
+                    6.42220E-08    7.18083E-08
+                    2.40280E-07    2.36560E-07
+                   -5.88123E-03    3.72566E-03
+                   -2.18519E-08    1.77610E-07
+                   -8.96041E-04    2.44938E-03
+1     SB14 FLUTTER ANALYSIS                                                 /    95 INTEL LINUX NASTRAN    / OCT  4, 22 / PAGE    45
+      BLOCKED CONTROLS                                                                                                              
+0                                                                                                                                   
+0                                               EIGENVECTOR FROM THE PK METHOD
+   EIGENVALUE =    -4.06422E-01    6.84968E+01
+
+   EIGENVECTOR
+                   -4.20582E-02   -4.42644E-03
+                    1.13730E-02    4.46014E-03
+                   -4.11077E-06   -5.46218E-06
+                    5.42580E-06    3.59355E-06
+                   -1.78113E-03   -2.34935E-03
+                    2.10170E-05    1.78912E-05
+                    4.91803E-06    1.10011E-06
+                   -4.01085E-03    1.60214E-03
+                   -8.53781E-03   -2.80199E-03
+                   -3.51838E-06   -3.02609E-06
+                   -8.20640E-03    3.36289E-03
+                   -2.68247E-06   -2.52721E-06
+                   -1.42846E-02    3.60613E-04
+                   -2.28591E-02    6.56688E-02
+                   -8.30328E-06   -7.47349E-06
+                   -7.15575E-06   -9.11944E-06
+                    1.00000E+00    0.00000E+00
+                    6.24928E-03    3.21830E-02
+                    3.31174E-02    5.53725E-03
+                    1.96779E-02   -2.16046E-02
+                   -1.21767E-05    1.91858E-06
+                   -7.29332E-06    6.92214E-06
+                   -9.36181E-07   -8.31207E-07
+                   -2.39676E-06   -3.14384E-06
+                   -3.61538E-03   -6.02912E-04
+                   -4.64574E-04    2.00628E-04
+                   -2.02490E-08    9.27648E-08
+                   -3.02514E-03   -2.09911E-03
+                    1.06225E-07    1.04845E-07
+1     SB14 FLUTTER ANALYSIS                                                 /    95 INTEL LINUX NASTRAN    / OCT  4, 22 / PAGE    46
+      BLOCKED CONTROLS                                                                                                              
+0                                                                                                                                   
+0                                               EIGENVECTOR FROM THE PK METHOD
+   EIGENVALUE =    -8.82791E-01    8.09439E+01
+
+   EIGENVECTOR
+                   -7.96090E-03    4.29359E-02
+                    3.49754E-03   -6.22876E-03
+                    1.15636E-05    4.00167E-06
+                   -3.56675E-06   -3.80419E-06
+                   -1.15138E-03   -1.88485E-03
+                   -3.24624E-05   -1.97873E-05
+                   -5.59072E-06    4.33729E-07
+                   -5.64192E-03    4.31872E-03
+                   -4.10800E-03    6.83877E-03
+                    5.04281E-06    3.17208E-06
+                   -2.52057E-03   -1.91105E-02
+                    4.24994E-06    2.86608E-06
+                    3.21328E-03    2.99424E-03
+                   -5.93576E-04   -5.25130E-02
+                    1.20153E-05    7.41667E-06
+                    1.11354E-05    8.39087E-06
+                   -2.56036E-03   -3.36970E-02
+                    1.00000E+00    0.00000E+00
+                   -1.08144E-01   -4.58507E-01
+                   -3.65508E-02    2.76438E-02
+                    5.62758E-05   -8.17265E-07
+                    4.51598E-05   -1.04139E-05
+                    1.02309E-06    1.21671E-06
+                    2.74870E-06    5.86267E-06
+                    2.24976E-03    5.42289E-03
+                    1.13502E-03    8.37509E-04
+                    1.80916E-08   -1.07193E-07
+                   -4.81749E-03    1.85395E-03
+                   -2.36855E-07   -2.94889E-07
+1     SB14 FLUTTER ANALYSIS                                                 /    95 INTEL LINUX NASTRAN    / OCT  4, 22 / PAGE    47
+      BLOCKED CONTROLS                                                                                                              
+0                                                                                                                                   
+0                                               EIGENVECTOR FROM THE PK METHOD
+   EIGENVALUE =    -2.01180E+00    8.19940E+01
+
+   EIGENVECTOR
+                   -8.34344E-02   -3.19348E-03
+                    1.89396E-02    1.45246E-03
+                    4.68030E-06    9.97305E-06
+                    4.42088E-06   -3.57606E-06
+                   -7.68496E-04   -1.04872E-04
+                    3.34665E-06   -2.87485E-05
+                   -2.63674E-06   -3.92490E-06
+                   -3.15691E-03   -3.37956E-03
+                   -1.50454E-02   -6.01920E-03
+                   -6.49517E-07    4.33344E-06
+                    7.25440E-03   -4.63205E-03
+                   -6.50101E-07    3.78248E-06
+                   -9.11022E-03    1.26645E-03
+                    3.09305E-02   -2.06952E-02
+                   -1.65361E-06    1.03915E-05
+                   -2.76385E-06    9.56491E-06
+                    1.79531E-02   -1.17377E-02
+                    3.93774E-02    4.98876E-01
+                    1.00000E+00    0.00000E+00
+                    3.11456E-02   -5.34006E-02
+                    1.23303E-05    3.63507E-05
+                    1.53031E-05    2.31395E-05
+                   -2.44537E-07    1.43880E-06
+                   -2.61687E-06    4.55350E-06
+                   -1.15281E-02    5.84462E-03
+                   -6.37313E-04    2.63177E-03
+                    2.10812E-08   -6.75956E-09
+                   -5.33825E-03   -1.02956E-02
+                    1.54081E-07   -2.70166E-07
+1     SB14 FLUTTER ANALYSIS                                                 /    95 INTEL LINUX NASTRAN    / OCT  4, 22 / PAGE    48
+      BLOCKED CONTROLS                                                                                                              
+0                                                                                                                                   
+0                                               EIGENVECTOR FROM THE PK METHOD
+   EIGENVALUE =    -1.58455E+00    9.14532E+01
+
+   EIGENVECTOR
+                    1.09729E-03   -3.86119E-03
+                    2.84502E-03   -1.84835E-03
+                   -7.77401E-06   -1.28623E-05
+                    4.04464E-06    4.58425E-06
+                   -2.12083E-03    2.14022E-03
+                    2.41620E-05    3.66389E-05
+                    7.59470E-06    2.33829E-06
+                    5.57493E-03   -3.19989E-04
+                    9.52015E-04   -5.77237E-04
+                   -3.03478E-06   -5.50861E-06
+                   -8.94799E-03    1.74669E-02
+                   -2.81984E-06   -4.72015E-06
+                   -2.43006E-03    6.58571E-03
+                   -1.32976E-02    5.40210E-02
+                   -7.67357E-06   -1.09276E-05
+                   -4.92931E-06   -1.01889E-05
+                   -1.12763E-02    3.49214E-02
+                    1.15309E-02   -5.09752E-02
+                   -2.66622E-02    5.81687E-02
+                    1.00000E+00    0.00000E+00
+                   -1.30044E-04   -3.84828E-06
+                   -8.65382E-05    4.38615E-05
+                   -1.72929E-06   -5.69938E-06
+                   -1.79790E-06   -1.92709E-05
+                   -3.32495E-03    6.11812E-03
+                    8.91836E-04    8.35478E-04
+                   -2.65081E-07    2.00764E-07
+                    2.94370E-03   -1.89694E-03
+                    1.19747E-08    5.37250E-07
+1     SB14 FLUTTER ANALYSIS                                                 /    95 INTEL LINUX NASTRAN    / OCT  4, 22 / PAGE    49
+      BLOCKED CONTROLS                                                                                                              
+0                                                                                                                                   
+0                                               EIGENVECTOR FROM THE PK METHOD
+   EIGENVALUE =    -3.16309E+00    1.00661E+02
+
+   EIGENVECTOR
+                   -3.05295E-06   -2.57076E-06
+                   -3.08686E-06   -3.66217E-06
+                   -2.95366E-03    3.12274E-03
+                    8.98490E-04    2.84002E-04
+                    2.54402E-06    2.31421E-06
+                    3.04524E-03    1.96872E-02
+                    2.38787E-03   -1.06091E-03
+                   -5.92978E-07   -2.56142E-06
+                   -5.64332E-08   -6.54443E-08
+                   -2.36926E-02   -3.39186E-03
+                    1.31137E-05    1.19260E-05
+                    7.46679E-04   -3.56750E-03
+                    2.06255E-07   -3.10638E-07
+                    1.81074E-05    1.00502E-05
+                    5.07052E-03   -1.33832E-02
+                    1.14069E-02   -1.72431E-02
+                    3.61067E-06   -2.95000E-06
+                    7.46880E-06    6.54587E-06
+                   -1.46840E-06    3.92096E-06
+                   -1.47799E-05   -2.87051E-05
+                    1.00000E+00    0.00000E+00
+                   -8.63749E-02   -4.98180E-01
+                   -1.03413E-02    1.18479E-02
+                   -3.37862E-02    3.74161E-02
+                    1.01717E-06    8.46822E-07
+                    3.52757E-07    8.08989E-07
+                    3.57970E-03   -9.18765E-04
+                    1.21637E-07   -3.43297E-08
+                    2.72933E-03   -5.01349E-04
+1     SB14 FLUTTER ANALYSIS                                                 /    95 INTEL LINUX NASTRAN    / OCT  4, 22 / PAGE    50
+      BLOCKED CONTROLS                                                                                                              
+0                                                                                                                                   
+0                                               EIGENVECTOR FROM THE PK METHOD
+   EIGENVALUE =    -4.97109E+00    1.02518E+02
+
+   EIGENVECTOR
+                    1.52175E-06   -6.31649E-06
+                    2.10398E-06   -7.00585E-06
+                    2.00444E-03   -1.02056E-02
+                   -1.55621E-03    3.88619E-03
+                   -1.05838E-06    5.14789E-06
+                   -2.01284E-02    2.56618E-02
+                    3.48856E-03    1.22458E-03
+                    2.82698E-06   -2.59896E-06
+                    8.21062E-08   -2.49476E-08
+                    7.86066E-03   -2.05036E-02
+                   -5.01996E-06    2.60863E-05
+                    3.14319E-03   -2.84723E-03
+                    6.60034E-07    6.92258E-08
+                    1.58240E-06    3.35497E-05
+                    8.61547E-03   -6.31589E-03
+                    1.35190E-02   -2.92618E-03
+                    7.23222E-06    5.13775E-06
+                   -5.30056E-06    6.15463E-06
+                   -9.30734E-06   -3.46654E-06
+                    3.33965E-05   -1.49024E-05
+                    2.47021E-01    5.56541E-01
+                    1.00000E+00    0.00000E+00
+                   -1.06371E-02   -3.04610E-03
+                   -2.34631E-02   -1.14872E-02
+                   -8.17935E-07    1.81426E-06
+                   -9.30080E-07    6.74860E-07
+                    7.30206E-04    2.35821E-03
+                   -7.27552E-08    2.44591E-07
+                   -1.47527E-04    1.33317E-03
+1     SB14 FLUTTER ANALYSIS                                                 /    95 INTEL LINUX NASTRAN    / OCT  4, 22 / PAGE    51
+      BLOCKED CONTROLS                                                                                                              
+0                                                                                                                                   
+0                                               EIGENVECTOR FROM THE PK METHOD
+   EIGENVALUE =    -1.82736E-02    1.14844E+02
+
+   EIGENVECTOR
+                   -3.33120E-07    3.23921E-07
+                   -1.93427E-07    3.12880E-07
+                   -8.07817E-04    3.22408E-03
+                    1.90027E-04   -8.90638E-04
+                    1.86864E-07   -2.39160E-07
+                   -1.48506E-04   -1.86008E-03
+                   -7.80875E-05    1.43547E-04
+                   -2.42165E-07   -5.94700E-09
+                   -1.67909E-08   -2.11341E-08
+                    9.93195E-03   -1.39985E-03
+                    9.22516E-07   -1.00376E-06
+                   -1.13832E-04    1.19265E-04
+                    1.27340E-08   -4.98386E-08
+                    2.05580E-07   -1.98256E-06
+                   -2.47288E-03   -2.04071E-03
+                   -3.39418E-04    1.06536E-03
+                   -9.31183E-07   -1.01522E-06
+                    1.99064E-06    1.28950E-06
+                    1.33882E-06    1.17541E-06
+                   -5.22463E-06   -3.98271E-06
+                    3.09468E-02   -1.25828E-02
+                   -2.52528E-02   -2.87016E-02
+                    1.00000E+00    0.00000E+00
+                    3.88520E-02   -9.56518E-03
+                    3.07206E-07   -1.54693E-07
+                    2.24032E-07    5.18162E-08
+                    7.93803E-03    1.11349E-03
+                    5.68905E-08    2.53345E-08
+                    5.78867E-04   -9.06559E-04
+1     SB14 FLUTTER ANALYSIS                                                 /    95 INTEL LINUX NASTRAN    / OCT  4, 22 / PAGE    52
+      BLOCKED CONTROLS                                                                                                              
+0                                                                                                                                   
+0                                               EIGENVECTOR FROM THE PK METHOD
+   EIGENVALUE =    -9.16760E-01    1.22821E+02
+
+   EIGENVECTOR
+                   -4.58691E-07    1.04157E-06
+                   -3.04752E-07    7.57311E-07
+                    6.01465E-03    1.27516E-02
+                   -1.55923E-03   -3.39331E-03
+                    2.64856E-07   -6.37570E-07
+                   -1.54627E-03   -4.92766E-03
+                    7.82597E-05    3.52077E-04
+                   -5.73829E-07    1.66604E-08
+                   -7.82983E-08   -4.74586E-08
+                   -5.49023E-03   -1.50453E-02
+                    1.71492E-06   -2.21159E-06
+                    7.80439E-06    2.17678E-04
+                    9.86767E-08   -1.24460E-07
+                   -1.36732E-06   -2.92428E-06
+                   -1.00382E-02   -5.26434E-03
+                    7.98058E-03    4.10348E-03
+                   -3.19314E-06   -9.34047E-07
+                    6.14929E-06    2.24594E-07
+                    3.82343E-06    7.81176E-07
+                   -1.45667E-05   -2.38007E-06
+                    3.05693E-02   -5.82067E-02
+                   -2.13603E-02   -1.89890E-02
+                   -1.59423E-02    1.85451E-02
+                    1.00000E+00    0.00000E+00
+                    2.02632E-06   -1.48479E-06
+                    7.00561E-07   -2.02502E-07
+                    1.22736E-02   -1.96112E-03
+                    3.89102E-07    2.66913E-08
+                    2.96731E-03   -6.39280E-03
+1     SB14 FLUTTER ANALYSIS                                                 /    95 INTEL LINUX NASTRAN    / OCT  4, 22 / PAGE    53
+      BLOCKED CONTROLS                                                                                                              
+0                                                                                                                                   
+0                                               EIGENVECTOR FROM THE PK METHOD
+   EIGENVALUE =    -6.04667E-01    1.28380E+02
+
+   EIGENVECTOR
+                   -4.88817E-02   -1.78669E-02
+                    1.25254E-02    6.18265E-03
+                    3.09472E-06    9.16522E-07
+                    2.85192E-06    1.61368E-06
+                   -1.17068E-03   -1.60320E-03
+                    6.55317E-07    1.33758E-06
+                    1.84444E-07   -6.33375E-08
+                   -8.81110E-04    6.86184E-04
+                   -1.11706E-02   -7.32219E-03
+                    1.26795E-07   -8.13384E-08
+                   -1.38623E-04   -4.27342E-03
+                   -8.63937E-08   -1.20941E-07
+                    1.08061E-02   -1.05973E-03
+                   -2.69167E-03   -1.68894E-03
+                    2.66104E-08   -3.26704E-07
+                   -4.92911E-07   -4.32627E-08
+                   -1.13528E-04   -8.05993E-04
+                   -2.35448E-03   -4.32728E-03
+                   -5.84820E-03   -1.57840E-02
+                    4.85882E-03   -1.28464E-02
+                    6.02123E-06   -3.84965E-06
+                    8.81131E-06   -9.17037E-06
+                   -5.43088E-07    1.14183E-06
+                   -5.34463E-06    1.00488E-05
+                    1.00000E+00    0.00000E+00
+                    1.03739E-02   -1.07510E-02
+                   -4.43648E-07    2.01099E-07
+                   -2.62730E-02   -2.66292E-02
+                    2.39573E-07    1.58928E-07
+1     SB14 FLUTTER ANALYSIS                                                 /    95 INTEL LINUX NASTRAN    / OCT  4, 22 / PAGE    54
+      BLOCKED CONTROLS                                                                                                              
+0                                                                                                                                   
+0                                               EIGENVECTOR FROM THE PK METHOD
+   EIGENVALUE =    -1.39542E+00    1.60668E+02
+
+   EIGENVECTOR
+                    7.55240E-03    3.45933E-02
+                   -1.13329E-03   -1.06102E-02
+                   -1.19110E-06   -3.18933E-06
+                   -5.87903E-08   -2.13358E-06
+                   -5.06102E-04    2.01092E-03
+                   -3.96941E-07    2.34229E-06
+                    4.32845E-07    1.01047E-07
+                    1.56987E-03   -7.79433E-04
+                   -2.50673E-03    3.51368E-03
+                    1.44712E-06   -4.99931E-07
+                    1.91362E-04    3.26615E-03
+                    9.96887E-08   -2.96912E-07
+                    1.03867E-02   -1.32127E-02
+                   -6.86826E-04    4.40972E-03
+                    1.25435E-06   -8.62564E-07
+                   -4.67286E-07   -2.93622E-07
+                   -1.10832E-03    2.08434E-03
+                   -1.52529E-03    3.22027E-03
+                   -5.97093E-03    1.09042E-02
+                   -3.85683E-03    4.37452E-03
+                    1.79669E-06    1.28025E-06
+                    1.72054E-06    7.14578E-08
+                   -1.94692E-08    1.10443E-07
+                   -6.21982E-07    7.78433E-07
+                   -1.44397E-02    1.68773E-02
+                    1.00000E+00    0.00000E+00
+                   -2.82714E-06    1.22290E-05
+                   -1.64315E-01   -3.13711E-02
+                   -1.14739E-07    1.32974E-06
+1     SB14 FLUTTER ANALYSIS                                                 /    95 INTEL LINUX NASTRAN    / OCT  4, 22 / PAGE    55
+      BLOCKED CONTROLS                                                                                                              
+0                                                                                                                                   
+0                                               EIGENVECTOR FROM THE PK METHOD
+   EIGENVALUE =    -1.75769E+00    1.65095E+02
+
+   EIGENVECTOR
+                    3.50588E-06    5.84053E-07
+                   -6.83669E-07    6.55102E-07
+                    2.22997E-02    4.30609E-02
+                   -5.35818E-03   -1.07474E-02
+                   -2.46046E-07   -7.08707E-07
+                    2.20002E-03   -3.21262E-03
+                   -2.94204E-04   -7.63997E-04
+                    6.40001E-09    1.04532E-08
+                    3.57904E-07   -2.06896E-07
+                   -3.96925E-02   -7.06339E-02
+                    1.03317E-07   -2.25676E-07
+                   -1.89447E-05   -1.53151E-03
+                   -3.17922E-07    4.36712E-07
+                    2.64073E-07   -6.70630E-08
+                   -7.86165E-03   -4.26091E-02
+                    9.43760E-03    2.10348E-02
+                    1.63589E-07   -1.07335E-07
+                    2.37449E-08   -1.69126E-07
+                    6.47970E-07   -7.84917E-07
+                    6.32965E-07   -4.97427E-07
+                   -6.67001E-03   -5.43520E-03
+                    4.67036E-03    6.44949E-03
+                   -2.71412E-03    1.87076E-03
+                   -4.22395E-03    1.49524E-02
+                   -6.92018E-07   -1.32585E-07
+                    8.53621E-06    9.32671E-06
+                    1.00000E+00    0.00000E+00
+                    9.97222E-06    2.60207E-05
+                   -8.04511E-03   -1.21610E-02
+1     SB14 FLUTTER ANALYSIS                                                 /    95 INTEL LINUX NASTRAN    / OCT  4, 22 / PAGE    56
+      BLOCKED CONTROLS                                                                                                              
+0                                                                                                                                   
+0                                               EIGENVECTOR FROM THE PK METHOD
+   EIGENVALUE =    -2.20984E+00    1.68092E+02
+
+   EIGENVECTOR
+                   -4.42275E-02   -8.41197E-02
+                    1.34243E-02    2.35268E-02
+                    2.88812E-06    6.98908E-06
+                    3.13374E-06    5.07568E-06
+                   -2.52905E-03   -3.46921E-03
+                   -1.88138E-07    1.05262E-06
+                    2.16551E-07    5.52780E-08
+                    9.42458E-04   -3.92680E-04
+                   -2.50510E-03   -1.37211E-02
+                    4.61424E-07   -2.21878E-06
+                   -5.13467E-03   -5.31113E-03
+                    1.13426E-07   -1.25737E-07
+                    2.34781E-03    1.15360E-02
+                   -1.90682E-03   -5.02999E-03
+                    7.11753E-07   -8.52516E-07
+                    1.66160E-07    1.67359E-08
+                   -1.25784E-03   -2.06625E-03
+                   -4.42916E-03   -7.37943E-03
+                   -1.46648E-02   -2.52833E-02
+                   -7.71889E-03   -9.25720E-03
+                    2.49934E-07    3.58268E-07
+                    1.13990E-06    5.44165E-07
+                   -7.85878E-08    1.54947E-07
+                   -6.39658E-07    1.39895E-06
+                   -7.36247E-03    1.68477E-02
+                    1.22351E-01    1.57948E-02
+                    1.63963E-05    2.29855E-05
+                    1.00000E+00    0.00000E+00
+                    2.10214E-06   -1.54598E-06
+1     SB14 FLUTTER ANALYSIS                                                 /    95 INTEL LINUX NASTRAN    / OCT  4, 22 / PAGE    57
+      BLOCKED CONTROLS                                                                                                              
+0                                                                                                                                   
+0                                               EIGENVECTOR FROM THE PK METHOD
+   EIGENVALUE =    -2.13427E+00    1.91005E+02
+
+   EIGENVECTOR
+                   -7.26247E-08    5.31630E-07
+                   -7.30777E-08    4.92392E-08
+                   -1.34369E-03    7.48799E-03
+                    3.73063E-04   -1.85564E-03
+                    4.94454E-08   -1.48190E-07
+                    8.08840E-04   -3.07574E-04
+                   -4.31322E-05   -1.81410E-04
+                   -1.43000E-08    7.09823E-08
+                    2.00284E-09    1.72436E-08
+                   -2.31153E-03   -1.16206E-02
+                    1.91400E-07   -3.80091E-07
+                   -6.88276E-05   -1.55001E-04
+                    4.60548E-07   -2.04446E-07
+                    3.71383E-07   -7.04466E-07
+                   -1.15881E-02    3.04528E-04
+                    1.25103E-02   -2.71659E-03
+                    2.34233E-07   -1.50047E-07
+                   -4.70507E-07    1.99695E-07
+                   -3.47590E-07    9.40217E-09
+                    7.24652E-07   -2.77135E-07
+                   -8.93040E-03    1.80383E-03
+                    5.80006E-03    9.99378E-04
+                   -3.45911E-04    4.05314E-04
+                   -8.52120E-03    7.65005E-03
+                   -6.45456E-08    1.75991E-07
+                    1.04440E-06    5.42523E-07
+                    6.32490E-04   -6.07623E-03
+                   -3.40138E-06    1.23272E-06
+                    1.00000E+00    0.00000E+00
+0*** USER INFORMATION MESSAGE FROM OUTPUT4 MODULE. DATA BLOCK MHH      WAS WRITTEN OUT TO FORTRAN TAPE 15 (INP1)
+     IN FORMATTED   RECORDS. DENSE  MATRIX FORM.  TRAILER =    29    29     6     2     2      344
+0*** USER INFORMATION MESSAGE FROM OUTPUT4 MODULE. DATA BLOCK KHH      WAS WRITTEN OUT TO FORTRAN TAPE 17 (INP3)
+     IN FORMATTED   RECORDS. DENSE  MATRIX FORM.  TRAILER =    29    29     6     2     2      344
+0*** USER INFORMATION MESSAGE FROM OUTPUT4 MODULE. DATA BLOCK QHHL     WAS WRITTEN OUT TO FORTRAN TAPE 18 (INP4)
+     IN FORMATTED   RECORDS. DENSE  MATRIX FORM.  TRAILER =   319    29     2     4   116    10000
+1     SB14 FLUTTER ANALYSIS                                                 /    95 INTEL LINUX NASTRAN    / OCT  4, 22 / PAGE    58
+      BLOCKED CONTROLS                                                                                                              
+0                                                                                                                                   
+0                                                       FLUTTER  SUMMARY
+
+       POINT =    1     MACH NUMBER =  0.0000     DENSITY RATIO =  1.2250E+00     METHOD = PK  
+
+
+       KFREQ            1./KFREQ         VELOCITY            DAMPING         FREQUENCY            COMPLEX   EIGENVALUE
+        0.0000       9.9999996E+24     1.0799136E+02    -5.4759614E-04     0.0000000E+00    -1.5815031E-02     0.0000000E+00
+1     SB14 FLUTTER ANALYSIS                                                 /    95 INTEL LINUX NASTRAN    / OCT  4, 22 / PAGE    59
+      BLOCKED CONTROLS                                                                                                              
+0                                                                                                                                   
+0                                                       FLUTTER  SUMMARY
+
+       POINT =    2     MACH NUMBER =  0.0000     DENSITY RATIO =  1.2250E+00     METHOD = PK  
+
+
+       KFREQ            1./KFREQ         VELOCITY            DAMPING         FREQUENCY            COMPLEX   EIGENVALUE
+        0.0028       3.5845596E+02     1.0799136E+02    -6.5681261E-01     3.7000116E-02    -7.6347433E-02     2.3247859E-01
+1     SB14 FLUTTER ANALYSIS                                                 /    95 INTEL LINUX NASTRAN    / OCT  4, 22 / PAGE    60
+      BLOCKED CONTROLS                                                                                                              
+0                                                                                                                                   
+0                                                       FLUTTER  SUMMARY
+
+       POINT =    3     MACH NUMBER =  0.0000     DENSITY RATIO =  1.2250E+00     METHOD = PK  
+
+
+       KFREQ            1./KFREQ         VELOCITY            DAMPING         FREQUENCY            COMPLEX   EIGENVALUE
+        0.0063       1.5752112E+02     1.0799136E+02    -1.7544264E-03     8.4197670E-02    -4.6407175E-04     5.2902961E-01
+1     SB14 FLUTTER ANALYSIS                                                 /    95 INTEL LINUX NASTRAN    / OCT  4, 22 / PAGE    61
+      BLOCKED CONTROLS                                                                                                              
+0                                                                                                                                   
+0                                                       FLUTTER  SUMMARY
+
+       POINT =    4     MACH NUMBER =  0.0000     DENSITY RATIO =  1.2250E+00     METHOD = PK  
+
+
+       KFREQ            1./KFREQ         VELOCITY            DAMPING         FREQUENCY            COMPLEX   EIGENVALUE
+        0.0089       1.1277599E+02     1.0799136E+02     4.7060169E-02     1.1760402E-01     1.7387036E-02     7.3892790E-01
+1     SB14 FLUTTER ANALYSIS                                                 /    95 INTEL LINUX NASTRAN    / OCT  4, 22 / PAGE    62
+      BLOCKED CONTROLS                                                                                                              
+0                                                                                                                                   
+0                                                       FLUTTER  SUMMARY
+
+       POINT =    5     MACH NUMBER =  0.0000     DENSITY RATIO =  1.2250E+00     METHOD = PK  
+
+
+       KFREQ            1./KFREQ         VELOCITY            DAMPING         FREQUENCY            COMPLEX   EIGENVALUE
+        0.0171       5.8635658E+01     1.0799136E+02    -3.5949165E-01     2.2619191E-01    -2.5545579E-01     1.4212058E+00
+1     SB14 FLUTTER ANALYSIS                                                 /    95 INTEL LINUX NASTRAN    / OCT  4, 22 / PAGE    63
+      BLOCKED CONTROLS                                                                                                              
+0                                                                                                                                   
+0                                                       FLUTTER  SUMMARY
+
+       POINT =    6     MACH NUMBER =  0.0000     DENSITY RATIO =  1.2250E+00     METHOD = PK  
+
+
+       KFREQ            1./KFREQ         VELOCITY            DAMPING         FREQUENCY            COMPLEX   EIGENVALUE
+        0.0427       2.3422621E+01     1.0799136E+02    -2.1112096E+00     5.6624371E-01    -3.7556455E+00     3.5578141E+00
+1     SB14 FLUTTER ANALYSIS                                                 /    95 INTEL LINUX NASTRAN    / OCT  4, 22 / PAGE    64
+      BLOCKED CONTROLS                                                                                                              
+0                                                                                                                                   
+0                                                       FLUTTER  SUMMARY
+
+       POINT =    7     MACH NUMBER =  0.0000     DENSITY RATIO =  1.2250E+00     METHOD = PK  
+
+
+       KFREQ            1./KFREQ         VELOCITY            DAMPING         FREQUENCY            COMPLEX   EIGENVALUE
+        0.1611       6.2088070E+00     1.0799136E+02    -8.2376879E-01     2.1361449E+00    -5.5282278E+00     1.3421795E+01
+1     SB14 FLUTTER ANALYSIS                                                 /    95 INTEL LINUX NASTRAN    / OCT  4, 22 / PAGE    65
+      BLOCKED CONTROLS                                                                                                              
+0                                                                                                                                   
+0                                                       FLUTTER  SUMMARY
+
+       POINT =    8     MACH NUMBER =  0.0000     DENSITY RATIO =  1.2250E+00     METHOD = PK  
+
+
+       KFREQ            1./KFREQ         VELOCITY            DAMPING         FREQUENCY            COMPLEX   EIGENVALUE
+        0.1949       5.1311460E+00     1.0799136E+02    -1.1102387E-01     2.5847855E+00    -9.0155196E-01     1.6240686E+01
+1     SB14 FLUTTER ANALYSIS                                                 /    95 INTEL LINUX NASTRAN    / OCT  4, 22 / PAGE    66
+      BLOCKED CONTROLS                                                                                                              
+0                                                                                                                                   
+0                                                       FLUTTER  SUMMARY
+
+       POINT =    9     MACH NUMBER =  0.0000     DENSITY RATIO =  1.2250E+00     METHOD = PK  
+
+
+       KFREQ            1./KFREQ         VELOCITY            DAMPING         FREQUENCY            COMPLEX   EIGENVALUE
+        0.2665       3.7527814E+00     1.0799136E+02    -2.7810863E-01     3.5341549E+00    -3.0878055E+00     2.2205751E+01
+1     SB14 FLUTTER ANALYSIS                                                 /    95 INTEL LINUX NASTRAN    / OCT  4, 22 / PAGE    67
+      BLOCKED CONTROLS                                                                                                              
+0                                                                                                                                   
+0                                                       FLUTTER  SUMMARY
+
+       POINT =   10     MACH NUMBER =  0.0000     DENSITY RATIO =  1.2250E+00     METHOD = PK  
+
+
+       KFREQ            1./KFREQ         VELOCITY            DAMPING         FREQUENCY            COMPLEX   EIGENVALUE
+        0.2780       3.5965011E+00     1.0799136E+02    -5.1970708E-01     3.6877263E+00    -6.0209804E+00     2.3170668E+01
+1     SB14 FLUTTER ANALYSIS                                                 /    95 INTEL LINUX NASTRAN    / OCT  4, 22 / PAGE    68
+      BLOCKED CONTROLS                                                                                                              
+0                                                                                                                                   
+0                                                       FLUTTER  SUMMARY
+
+       POINT =   11     MACH NUMBER =  0.0000     DENSITY RATIO =  1.2250E+00     METHOD = PK  
+
+
+       KFREQ            1./KFREQ         VELOCITY            DAMPING         FREQUENCY            COMPLEX   EIGENVALUE
+        0.2783       3.5934684E+00     1.0799136E+02     3.0125972E-02     3.6908386E+00     3.4931400E-01     2.3190224E+01
+1     SB14 FLUTTER ANALYSIS                                                 /    95 INTEL LINUX NASTRAN    / OCT  4, 22 / PAGE    69
+      BLOCKED CONTROLS                                                                                                              
+0                                                                                                                                   
+0                                                       FLUTTER  SUMMARY
+
+       POINT =   12     MACH NUMBER =  0.0000     DENSITY RATIO =  1.2250E+00     METHOD = PK  
+
+
+       KFREQ            1./KFREQ         VELOCITY            DAMPING         FREQUENCY            COMPLEX   EIGENVALUE
+        0.3683       2.7155039E+00     1.0799136E+02    -1.4650214E-03     4.8841438E+00    -2.2479273E-02     3.0687981E+01
+1     SB14 FLUTTER ANALYSIS                                                 /    95 INTEL LINUX NASTRAN    / OCT  4, 22 / PAGE    70
+      BLOCKED CONTROLS                                                                                                              
+0                                                                                                                                   
+0                                                       FLUTTER  SUMMARY
+
+       POINT =   13     MACH NUMBER =  0.0000     DENSITY RATIO =  1.2250E+00     METHOD = PK  
+
+
+       KFREQ            1./KFREQ         VELOCITY            DAMPING         FREQUENCY            COMPLEX   EIGENVALUE
+        0.3926       2.5471468E+00     1.0799136E+02    -2.1497326E-01     5.2069674E+00    -3.5165694E+00     3.2716343E+01
+1     SB14 FLUTTER ANALYSIS                                                 /    95 INTEL LINUX NASTRAN    / OCT  4, 22 / PAGE    71
+      BLOCKED CONTROLS                                                                                                              
+0                                                                                                                                   
+0                                                       FLUTTER  SUMMARY
+
+       POINT =   14     MACH NUMBER =  0.0000     DENSITY RATIO =  1.2250E+00     METHOD = PK  
+
+
+       KFREQ            1./KFREQ         VELOCITY            DAMPING         FREQUENCY            COMPLEX   EIGENVALUE
+        0.5278       1.8947647E+00     1.0799136E+02    -2.4297971E-01     6.9997678E+00    -5.3432255E+00     4.3980839E+01
+1     SB14 FLUTTER ANALYSIS                                                 /    95 INTEL LINUX NASTRAN    / OCT  4, 22 / PAGE    72
+      BLOCKED CONTROLS                                                                                                              
+0                                                                                                                                   
+0                                                       FLUTTER  SUMMARY
+
+       POINT =   15     MACH NUMBER =  0.0000     DENSITY RATIO =  1.2250E+00     METHOD = PK  
+
+
+       KFREQ            1./KFREQ         VELOCITY            DAMPING         FREQUENCY            COMPLEX   EIGENVALUE
+        0.5510       1.8150393E+00     1.0799136E+02    -1.2867524E-01     7.3072309E+00    -2.9539132E+00     4.5912689E+01
+1     SB14 FLUTTER ANALYSIS                                                 /    95 INTEL LINUX NASTRAN    / OCT  4, 22 / PAGE    73
+      BLOCKED CONTROLS                                                                                                              
+0                                                                                                                                   
+0                                                       FLUTTER  SUMMARY
+
+       POINT =   16     MACH NUMBER =  0.0000     DENSITY RATIO =  1.2250E+00     METHOD = PK  
+
+
+       KFREQ            1./KFREQ         VELOCITY            DAMPING         FREQUENCY            COMPLEX   EIGENVALUE
+        0.6724       1.4871689E+00     1.0799136E+02    -3.4701802E-02     8.9182281E+00    -9.7225571E-01     5.6034882E+01
+1     SB14 FLUTTER ANALYSIS                                                 /    95 INTEL LINUX NASTRAN    / OCT  4, 22 / PAGE    74
+      BLOCKED CONTROLS                                                                                                              
+0                                                                                                                                   
+0                                                       FLUTTER  SUMMARY
+
+       POINT =   17     MACH NUMBER =  0.0000     DENSITY RATIO =  1.2250E+00     METHOD = PK  
+
+
+       KFREQ            1./KFREQ         VELOCITY            DAMPING         FREQUENCY            COMPLEX   EIGENVALUE
+        0.8220       1.2166023E+00     1.0799136E+02    -1.1866882E-02     1.0901600E+01    -4.0642154E-01     6.8496773E+01
+1     SB14 FLUTTER ANALYSIS                                                 /    95 INTEL LINUX NASTRAN    / OCT  4, 22 / PAGE    75
+      BLOCKED CONTROLS                                                                                                              
+0                                                                                                                                   
+0                                                       FLUTTER  SUMMARY
+
+       POINT =   18     MACH NUMBER =  0.0000     DENSITY RATIO =  1.2250E+00     METHOD = PK  
+
+
+       KFREQ            1./KFREQ         VELOCITY            DAMPING         FREQUENCY            COMPLEX   EIGENVALUE
+        0.9713       1.0295198E+00     1.0799136E+02    -2.1812418E-02     1.2882619E+01    -8.8279092E-01     8.0943886E+01
+1     SB14 FLUTTER ANALYSIS                                                 /    95 INTEL LINUX NASTRAN    / OCT  4, 22 / PAGE    76
+      BLOCKED CONTROLS                                                                                                              
+0                                                                                                                                   
+0                                                       FLUTTER  SUMMARY
+
+       POINT =   19     MACH NUMBER =  0.0000     DENSITY RATIO =  1.2250E+00     METHOD = PK  
+
+
+       KFREQ            1./KFREQ         VELOCITY            DAMPING         FREQUENCY            COMPLEX   EIGENVALUE
+        0.9839       1.0163347E+00     1.0799136E+02    -4.9071781E-02     1.3049748E+01    -2.0117955E+00     8.1993988E+01
+1     SB14 FLUTTER ANALYSIS                                                 /    95 INTEL LINUX NASTRAN    / OCT  4, 22 / PAGE    77
+      BLOCKED CONTROLS                                                                                                              
+0                                                                                                                                   
+0                                                       FLUTTER  SUMMARY
+
+       POINT =   20     MACH NUMBER =  0.0000     DENSITY RATIO =  1.2250E+00     METHOD = PK  
+
+
+       KFREQ            1./KFREQ         VELOCITY            DAMPING         FREQUENCY            COMPLEX   EIGENVALUE
+        1.0974       9.1121250E-01     1.0799136E+02    -3.4652773E-02     1.4555233E+01    -1.5845541E+00     9.1453232E+01
+1     SB14 FLUTTER ANALYSIS                                                 /    95 INTEL LINUX NASTRAN    / OCT  4, 22 / PAGE    78
+      BLOCKED CONTROLS                                                                                                              
+0                                                                                                                                   
+0                                                       FLUTTER  SUMMARY
+
+       POINT =   21     MACH NUMBER =  0.0000     DENSITY RATIO =  1.2250E+00     METHOD = PK  
+
+
+       KFREQ            1./KFREQ         VELOCITY            DAMPING         FREQUENCY            COMPLEX   EIGENVALUE
+        1.2079       8.2786345E-01     1.0799136E+02    -6.2846534E-02     1.6020651E+01    -3.1630886E+00     1.0066072E+02
+1     SB14 FLUTTER ANALYSIS                                                 /    95 INTEL LINUX NASTRAN    / OCT  4, 22 / PAGE    79
+      BLOCKED CONTROLS                                                                                                              
+0                                                                                                                                   
+0                                                       FLUTTER  SUMMARY
+
+       POINT =   22     MACH NUMBER =  0.0000     DENSITY RATIO =  1.2250E+00     METHOD = PK  
+
+
+       KFREQ            1./KFREQ         VELOCITY            DAMPING         FREQUENCY            COMPLEX   EIGENVALUE
+        1.2302       8.1286836E-01     1.0799136E+02    -9.6980169E-02     1.6316185E+01    -4.9710884E+00     1.0251762E+02
+1     SB14 FLUTTER ANALYSIS                                                 /    95 INTEL LINUX NASTRAN    / OCT  4, 22 / PAGE    80
+      BLOCKED CONTROLS                                                                                                              
+0                                                                                                                                   
+0                                                       FLUTTER  SUMMARY
+
+       POINT =   23     MACH NUMBER =  0.0000     DENSITY RATIO =  1.2250E+00     METHOD = PK  
+
+
+       KFREQ            1./KFREQ         VELOCITY            DAMPING         FREQUENCY            COMPLEX   EIGENVALUE
+        1.3781       7.2562110E-01     1.0799136E+02    -3.1823304E-04     1.8278011E+01    -1.8273599E-02     1.1484414E+02
+1     SB14 FLUTTER ANALYSIS                                                 /    95 INTEL LINUX NASTRAN    / OCT  4, 22 / PAGE    81
+      BLOCKED CONTROLS                                                                                                              
+0                                                                                                                                   
+0                                                       FLUTTER  SUMMARY
+
+       POINT =   24     MACH NUMBER =  0.0000     DENSITY RATIO =  1.2250E+00     METHOD = PK  
+
+
+       KFREQ            1./KFREQ         VELOCITY            DAMPING         FREQUENCY            COMPLEX   EIGENVALUE
+        1.4739       6.7849433E-01     1.0799136E+02    -1.4928388E-02     1.9547565E+01    -9.1675961E-01     1.2282098E+02
+1     SB14 FLUTTER ANALYSIS                                                 /    95 INTEL LINUX NASTRAN    / OCT  4, 22 / PAGE    82
+      BLOCKED CONTROLS                                                                                                              
+0                                                                                                                                   
+0                                                       FLUTTER  SUMMARY
+
+       POINT =   25     MACH NUMBER =  0.0000     DENSITY RATIO =  1.2250E+00     METHOD = PK  
+
+
+       KFREQ            1./KFREQ         VELOCITY            DAMPING         FREQUENCY            COMPLEX   EIGENVALUE
+        1.5406       6.4911222E-01     1.0799136E+02    -9.4199274E-03     2.0432384E+01    -6.0466731E-01     1.2838046E+02
+1     SB14 FLUTTER ANALYSIS                                                 /    95 INTEL LINUX NASTRAN    / OCT  4, 22 / PAGE    83
+      BLOCKED CONTROLS                                                                                                              
+0                                                                                                                                   
+0                                                       FLUTTER  SUMMARY
+
+       POINT =   26     MACH NUMBER =  0.0000     DENSITY RATIO =  1.2250E+00     METHOD = PK  
+
+
+       KFREQ            1./KFREQ         VELOCITY            DAMPING         FREQUENCY            COMPLEX   EIGENVALUE
+        1.9280       5.1866764E-01     1.0799136E+02    -1.7370218E-02     2.5571117E+01    -1.3954197E+00     1.6066808E+02
+1     SB14 FLUTTER ANALYSIS                                                 /    95 INTEL LINUX NASTRAN    / OCT  4, 22 / PAGE    84
+      BLOCKED CONTROLS                                                                                                              
+0                                                                                                                                   
+0                                                       FLUTTER  SUMMARY
+
+       POINT =   27     MACH NUMBER =  0.0000     DENSITY RATIO =  1.2250E+00     METHOD = PK  
+
+
+       KFREQ            1./KFREQ         VELOCITY            DAMPING         FREQUENCY            COMPLEX   EIGENVALUE
+        1.9811       5.0475937E-01     1.0799136E+02    -2.1293001E-02     2.6275711E+01    -1.7576858E+00     1.6509517E+02
+1     SB14 FLUTTER ANALYSIS                                                 /    95 INTEL LINUX NASTRAN    / OCT  4, 22 / PAGE    85
+      BLOCKED CONTROLS                                                                                                              
+0                                                                                                                                   
+0                                                       FLUTTER  SUMMARY
+
+       POINT =   28     MACH NUMBER =  0.0000     DENSITY RATIO =  1.2250E+00     METHOD = PK  
+
+
+       KFREQ            1./KFREQ         VELOCITY            DAMPING         FREQUENCY            COMPLEX   EIGENVALUE
+        2.0171       4.9576035E-01     1.0799136E+02    -2.6293224E-02     2.6752668E+01    -2.2098401E+00     1.6809198E+02
+1     SB14 FLUTTER ANALYSIS                                                 /    95 INTEL LINUX NASTRAN    / OCT  4, 22 / PAGE    86
+      BLOCKED CONTROLS                                                                                                              
+0                                                                                                                                   
+0                                                       FLUTTER  SUMMARY
+
+       POINT =   29     MACH NUMBER =  0.0000     DENSITY RATIO =  1.2250E+00     METHOD = PK  
+
+
+       KFREQ            1./KFREQ         VELOCITY            DAMPING         FREQUENCY            COMPLEX   EIGENVALUE
+        2.2921       4.3628827E-01     1.0799136E+02    -2.2347765E-02     3.0399422E+01    -2.1342697E+00     1.9100520E+02
+0*** SYSTEM WARNING MESSAGE 3022
++                                 (SEE PROG. MANUAL SEC. 4.9.7, OR USERS' MANUAL P. 6.5-3)
+     DATA BLOCK PLTPARA  MAY BE REQUIRED AS INPUT AND IS NOT OUTPUT BY A PREVIOUS MODULE IN THE CURRENT DMAP ROUTE.
+0*** SYSTEM WARNING MESSAGE 3022
++                                 (SEE PROG. MANUAL SEC. 4.9.7, OR USERS' MANUAL P. 6.5-3)
+     DATA BLOCK GPSETSA  MAY BE REQUIRED AS INPUT AND IS NOT OUTPUT BY A PREVIOUS MODULE IN THE CURRENT DMAP ROUTE.
+0*** SYSTEM WARNING MESSAGE 3022
++                                 (SEE PROG. MANUAL SEC. 4.9.7, OR USERS' MANUAL P. 6.5-3)
+     DATA BLOCK ELSETSA  MAY BE REQUIRED AS INPUT AND IS NOT OUTPUT BY A PREVIOUS MODULE IN THE CURRENT DMAP ROUTE.
+0*** SYSTEM WARNING MESSAGE 3022
++                                 (SEE PROG. MANUAL SEC. 4.9.7, OR USERS' MANUAL P. 6.5-3)
+     DATA BLOCK PLTPARA  MAY BE REQUIRED AS INPUT AND IS NOT OUTPUT BY A PREVIOUS MODULE IN THE CURRENT DMAP ROUTE.
+0*** SYSTEM WARNING MESSAGE 3022
++                                 (SEE PROG. MANUAL SEC. 4.9.7, OR USERS' MANUAL P. 6.5-3)
+     DATA BLOCK GPSETSA  MAY BE REQUIRED AS INPUT AND IS NOT OUTPUT BY A PREVIOUS MODULE IN THE CURRENT DMAP ROUTE.
+0*** SYSTEM WARNING MESSAGE 3022
++                                 (SEE PROG. MANUAL SEC. 4.9.7, OR USERS' MANUAL P. 6.5-3)
+     DATA BLOCK ELSETSA  MAY BE REQUIRED AS INPUT AND IS NOT OUTPUT BY A PREVIOUS MODULE IN THE CURRENT DMAP ROUTE.
+
+
+
+
+                                        * * * END OF JOB * * *
+1
+ JOB TITLE =  SB14 FLUTTER ANALYSIS                                              
+ DATE: 10/ 4/22
+ END TIME:  0:12:15
+ TOTAL WALL CLOCK TIME      0 SEC.
+ 
