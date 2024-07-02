@@ -3,7 +3,7 @@ from scipy.interpolate import splrep, splev, bisplrep, bisplev
 import matplotlib.pyplot as plt
 import re
 
-a=1
+
 def read_nas_input(filename):
     Ma_list_DLM = []
     k_list = []
