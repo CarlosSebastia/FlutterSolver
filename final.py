@@ -242,7 +242,7 @@ def plot_d_f(V_list, p, l_ref, omega_s, d_s, debug=False):
 ## Preprocessing
 debug = False  # more detailed logging
 QHHL, K, M, D, Ma_list_DLM, k_list, l_ref, rho = get_data()  # get Data from NASTRAN DLM
-
+print(QHHL)
 # additional data
 tol = 1e-6  # tolerance for eigenvalue and pk convergence (could be obtained from FLUTTER EPS)
 max_it = 10  # maximum iterations for pk-loop and eigenvalue loop
